@@ -3,9 +3,17 @@ gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
 from gi.repository import Gtk, Adw
 
+
+
+# Создаём Stack для переключения панелей
+stack = Gtk.Stack()
+stack.set_transition_type(Gtk.StackTransitionType.SLIDE_LEFT_RIGHT)  # Set animation
 # Обработчики для кнопок
+#Back_button_func
+def on_back_clicked(button):
+    stack.set_visible_child_name("main_panel")
 def on_button1_clicked(button):
-    print("Кнопка 1 нажата!")
+    stack.set_visible_child_name("linux_terminal_panel")
 
 def on_button2_clicked(button):
     print("Кнопка 2 нажата!")
@@ -24,6 +32,9 @@ def on_activate(app):
     # Dark theme
     style_manager = Adw.StyleManager.get_default()
     style_manager.set_color_scheme(Adw.ColorScheme.FORCE_DARK)
+
+
+    ##############MAIN PANEL###############
 
     # Scrolled window
     scrolled_window = Gtk.ScrolledWindow()
@@ -76,17 +87,46 @@ def on_activate(app):
     box_horiz2.append(button3)
 
     # File manager button
-    button4 = Gtk.Button(label="File manager")
+    button4 = Gtk.Button(label="Packages & installing")
     button4.connect("clicked", on_button4_clicked)
     button4.add_css_class("custom-button3")
     box_horiz2.append(button4)
+    
+    stack.add_named(main_box, "main_panel")  # Добавляем основную панель
+    
+    #Append boxes
+    main_box.append(box_horiz1)
+    main_box.append(box_horiz2)
 
+    ##############LINUX TERMINAL PANEL###############
+
+    # Scrolled window
+    scrolled_window_panel2 = Gtk.ScrolledWindow()
+    scrolled_window_panel2.set_policy(Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
+
+    #Main Box in scrolled window
+    main_box_panel2 = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=10)
+    main_box_panel2.set_halign(Gtk.Align.CENTER)
+    main_box_panel2.set_valign(Gtk.Align.START)
+
+    #Back button
+    back_button = Gtk.Button(label="Back")
+    back_button.connect("clicked", on_back_clicked)
+    back_button.add_css_class("custom-button3")
+    main_box_panel2.append(back_button)
+
+    stack.add_named(main_box_panel2, "linux_terminal_panel")
+
+    
+    
+    
+    
     # Создаём CSS-провайдер для стилей кнопок
     css_provider = Gtk.CssProvider()
     try:
         css_provider.load_from_path("./styles/main.css")
     except Exception as e:
-        print(f"Ошибка загрузки CSS: {e}")
+        print(f"Error to load CSS: {e}")
 
     # Применяем CSS
     try:
@@ -96,15 +136,11 @@ def on_activate(app):
             Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
         )
     except Exception as e:
-        print(f"Ошибка применения CSS: {e}")
+        print(f"Application Error CSS: {e}")
 
-    #Append boxes
-    main_box.append(box_horiz1)
-    main_box.append(box_horiz2)
 
     # Устанавливаем контейнер как содержимое окна
-    scrolled_window.set_child(main_box)
-    window.set_child(scrolled_window)
+    window.set_child(stack)
 
     # Показываем окно
     window.present()
