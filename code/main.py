@@ -16,13 +16,13 @@ def on_button1_clicked(button):
     stack.set_visible_child_name("linux_terminal_panel")
 
 def on_button2_clicked(button):
-    print("Кнопка 2 нажата!")
+    stack.set_visible_child_name("hotkeys_panel")
 
 def on_button3_clicked(button):
-    print("Кнопка 3 нажата!")
+    stack.set_visible_child_name("file_manager_panel")
 
 def on_button4_clicked(button):
-    print("Кнопка 4 нажата!")
+    stack.set_visible_child_name("packages_and_installing_panel")
 
 def on_activate(app):
     window = Gtk.ApplicationWindow(application=app)
@@ -98,6 +98,7 @@ def on_activate(app):
     main_box.append(box_horiz1)
     main_box.append(box_horiz2)
 
+
     ##############LINUX TERMINAL PANEL###############
 
     # Scrolled window
@@ -106,17 +107,77 @@ def on_activate(app):
 
     #Main Box in scrolled window
     main_box_panel2 = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=10)
-    main_box_panel2.set_halign(Gtk.Align.CENTER)
+    main_box_panel2.set_halign(Gtk.Align.START)
+    # main_box_panel2.set_margin_top(10)
     main_box_panel2.set_valign(Gtk.Align.START)
 
     #Back button
-    back_button = Gtk.Button(label="Back")
+    back_button = Gtk.Button(label="‹")
     back_button.connect("clicked", on_back_clicked)
-    back_button.add_css_class("custom-button3")
+    back_button.add_css_class("back-button1")
     main_box_panel2.append(back_button)
 
     stack.add_named(main_box_panel2, "linux_terminal_panel")
 
+
+    ##############HOTKEYS PANEL###############
+
+    # Scrolled window
+    scrolled_window_panel3 = Gtk.ScrolledWindow()
+    scrolled_window_panel3.set_policy(Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
+
+    #Main Box in scrolled window
+    main_box_panel3 = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=10)
+    main_box_panel3.set_halign(Gtk.Align.START)
+    main_box_panel3.set_valign(Gtk.Align.START)
+
+    #Back button
+    back_button = Gtk.Button(label="‹")
+    back_button.connect("clicked", on_back_clicked)
+    back_button.add_css_class("back-button1")
+    main_box_panel3.append(back_button)
+
+    stack.add_named(main_box_panel3, "hotkeys_panel")
+
+
+    ##############FILE MANAGER PANEL###############
+
+    # Scrolled window
+    scrolled_window_panel4 = Gtk.ScrolledWindow()
+    scrolled_window_panel4.set_policy(Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
+
+    #Main Box in scrolled window
+    main_box_panel4 = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=10)
+    main_box_panel4.set_halign(Gtk.Align.START)
+    main_box_panel4.set_valign(Gtk.Align.START)
+
+    #Back button
+    back_button = Gtk.Button(label="‹")
+    back_button.connect("clicked", on_back_clicked)
+    back_button.add_css_class("back-button1")
+    main_box_panel4.append(back_button)
+
+    stack.add_named(main_box_panel4, "file_manager_panel")
+
+
+    ##############PACKAGES & INSTALLING PANEL###############
+
+    # Scrolled window
+    scrolled_window_panel5 = Gtk.ScrolledWindow()
+    scrolled_window_panel5.set_policy(Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
+
+    #Main Box in scrolled window
+    main_box_panel5 = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=10)
+    main_box_panel5.set_halign(Gtk.Align.START)
+    main_box_panel5.set_valign(Gtk.Align.START)
+
+    #Back button
+    back_button = Gtk.Button(label="‹")
+    back_button.connect("clicked", on_back_clicked)
+    back_button.add_css_class("back-button1")
+    main_box_panel5.append(back_button)
+
+    stack.add_named(main_box_panel5, "packages_and_installing_panel")
     
     
     
