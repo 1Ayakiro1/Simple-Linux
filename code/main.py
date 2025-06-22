@@ -10,6 +10,12 @@ def on_button1_clicked(button):
 def on_button2_clicked(button):
     print("Кнопка 2 нажата!")
 
+def on_button3_clicked(button):
+    print("Кнопка 3 нажата!")
+
+def on_button4_clicked(button):
+    print("Кнопка 4 нажата!")
+
 def on_activate(app):
     window = Gtk.ApplicationWindow(application=app)
     window.set_title("Simple Linux")
@@ -19,25 +25,61 @@ def on_activate(app):
     style_manager = Adw.StyleManager.get_default()
     style_manager.set_color_scheme(Adw.ColorScheme.FORCE_DARK)
 
-    # Box for buttons
-    box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
-    box.set_margin_top(20)
-    box.set_margin_start(20)
-    box.set_margin_end(20)
-    box.set_halign(Gtk.Align.CENTER)
-    box.set_valign(Gtk.Align.CENTER)
+    # Scrolled window
+    scrolled_window = Gtk.ScrolledWindow()
+    scrolled_window.set_policy(Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
 
-    # Создаём первую кнопку
-    button1 = Gtk.Button(label="Кнопка 1")
+    #Main Box in scrolled window
+    main_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=10)
+    main_box.set_halign(Gtk.Align.CENTER)
+    main_box.set_valign(Gtk.Align.START)
+
+
+    #Top label in main box
+    label = Gtk.Label(label="Let's Begin!")
+    label.add_css_class("custom-label")  # Для стилизации в styles.css
+    main_box.append(label)
+
+    # Box for buttons
+    box_horiz1 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
+    box_horiz1.set_margin_top(20)
+    box_horiz1.set_margin_start(20)
+    box_horiz1.set_margin_end(20)
+    box_horiz1.set_halign(Gtk.Align.CENTER)
+    box_horiz1.set_valign(Gtk.Align.CENTER)
+
+    # Next box
+    box_horiz2 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
+    box_horiz2.set_margin_top(20)
+    box_horiz2.set_margin_start(20)
+    box_horiz2.set_margin_end(20)
+    box_horiz2.set_halign(Gtk.Align.CENTER)
+    box_horiz2.set_valign(Gtk.Align.CENTER)
+
+
+    # Terminal button
+    button1 = Gtk.Button(label="Linux Terminal")
     button1.connect("clicked", on_button1_clicked)
     button1.add_css_class("custom-button1")
-    box.append(button1)
+    box_horiz1.append(button1)
 
-    # Создаём вторую кнопку
-    button2 = Gtk.Button(label="Кнопка 2")
+    # Hotkeys button
+    button2 = Gtk.Button(label="Hotkeys")
     button2.connect("clicked", on_button2_clicked)
     button2.add_css_class("custom-button2")
-    box.append(button2)
+    box_horiz1.append(button2)
+
+    # File manager button
+    button3 = Gtk.Button(label="File manager")
+    button3.connect("clicked", on_button3_clicked)
+    button3.add_css_class("custom-button3")
+    box_horiz2.append(button3)
+
+    # File manager button
+    button4 = Gtk.Button(label="File manager")
+    button4.connect("clicked", on_button4_clicked)
+    button4.add_css_class("custom-button3")
+    box_horiz2.append(button4)
 
     # Создаём CSS-провайдер для стилей кнопок
     css_provider = Gtk.CssProvider()
@@ -56,8 +98,13 @@ def on_activate(app):
     except Exception as e:
         print(f"Ошибка применения CSS: {e}")
 
+    #Append boxes
+    main_box.append(box_horiz1)
+    main_box.append(box_horiz2)
+
     # Устанавливаем контейнер как содержимое окна
-    window.set_child(box)
+    scrolled_window.set_child(main_box)
+    window.set_child(scrolled_window)
 
     # Показываем окно
     window.present()
