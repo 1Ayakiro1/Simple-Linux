@@ -94,3 +94,10 @@
     color: #ffffff;
     /* margin-left: auto; */
 }
+
+.hotkeys-label{
+    margin-top: 10px;
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: bold;
+}

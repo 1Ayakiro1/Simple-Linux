@@ -2,6 +2,7 @@ import gi
 gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
 from gi.repository import Gtk, Adw
+from text import hotkeys_text
 
 
 
@@ -125,20 +126,31 @@ def on_activate(app):
     # Scrolled window
     scrolled_window_panel3 = Gtk.ScrolledWindow()
     scrolled_window_panel3.set_policy(Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
+    scrolled_window_panel3.set_min_content_height(100)
+    scrolled_window_panel3.set_max_content_height(200)
 
-    #Main Box in scrolled window
+    # Main Box in scrolled window
     main_box_panel3 = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=10)
     main_box_panel3.set_halign(Gtk.Align.START)
     main_box_panel3.set_valign(Gtk.Align.START)
 
-    #Back button
+    # Back button
     back_button = Gtk.Button(label="‹")
     back_button.connect("clicked", on_back_clicked)
     back_button.add_css_class("back-button1")
+    back_button.set_size_request(50, 50)  # Фиксированная ширина и высота
+    back_button.set_halign(Gtk.Align.START)  # Прижимаем к левому краю
+    back_button.set_hexpand(False)  # Отключаем растяжение кнопки
     main_box_panel3.append(back_button)
 
-    stack.add_named(main_box_panel3, "hotkeys_panel")
+    # Hotkeys Label
+    hotkeys_label1 = Gtk.Label(label=hotkeys_text)
+    hotkeys_label1.add_css_class("hotkeys-label")
+    hotkeys_label1.set_wrap(True)
+    main_box_panel3.append(hotkeys_label1)
 
+    scrolled_window_panel3.set_child(main_box_panel3)
+    stack.add_named(scrolled_window_panel3, "hotkeys_panel")
 
     ##############FILE MANAGER PANEL###############
 
