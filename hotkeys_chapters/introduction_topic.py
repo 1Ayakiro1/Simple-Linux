@@ -1,0 +1,28 @@
+import gi
+gi.require_version("Gtk", "4.0")
+gi.require_version("Adw", "1")
+from gi.repository import Gtk, Adw
+from handlers import on_back_clicked
+from code.text import hotkeys_text
+
+scrolled_window_intro_topic = Gtk.ScrolledWindow()
+scrolled_window_intro_topic.set_policy(Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
+
+# Main Box in scrolled window
+main_box_panel_intro_topic = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=10)
+main_box_panel_intro_topic.set_valign(Gtk.Align.START)
+
+# Back button
+back_button = Gtk.Button(label="‹")
+back_button.add_css_class("back-button1")
+main_box_panel_intro_topic.append(back_button)
+
+# Label
+label = Gtk.Label(label=hotkeys_text)
+label.add_css_class("label1")
+main_box_panel_intro_topic.append(label)
+
+scrolled_window_intro_topic.set_child(main_box_panel_intro_topic)
+
+def get_intro_panel():
+    return scrolled_window_intro_topic, "hotkeys_intro_panel", back_button
