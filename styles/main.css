@@ -62,13 +62,12 @@
     font-size: 16px;
 }
 
-.custom-label {
+.intro-label {
     color: #ffffff;
     font-size: 18px;
     margin-top: 30px;
     font-weight: bold;
     margin-bottom: 10px;
-    /* Отступ под лейблом */
 }
 
 .lang-button{

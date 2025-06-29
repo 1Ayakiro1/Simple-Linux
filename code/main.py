@@ -5,49 +5,34 @@ gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
 from gi.repository import Gtk, Adw
 from common import get_intro_panel
-from handlers import (
-    on_back_clicked,
-    on_language_clicked,
-    on_button1_clicked,
-    on_button2_clicked,
-    on_button_intro_topic_clicked,
-    on_button3_clicked,
-    on_button4_clicked,
-)
 
+# Создаём Stack для переключения панелей
 stack = Gtk.Stack()
-stack.set_transition_type(Gtk.StackTransitionType.SLIDE_LEFT_RIGHT)  # Set anim
+stack.set_transition_type(Gtk.StackTransitionType.SLIDE_LEFT_RIGHT)  # Set animation
+# Обработчики для кнопок
+#Back_button_func
+def on_back_clicked(button):
+    stack.set_visible_child_name("main_panel")
 
+def on_language_clicked(button):
+    print("Language button clicked")
 
-def _on_back_clicked(button):
-    on_back_clicked(button, stack)
+def on_button1_clicked(button):
+    stack.set_visible_child_name("linux_terminal_panel")
 
-def _on_language_clicked(button):
-    on_language_clicked(button)
+def on_button2_clicked(button):
+    stack.set_visible_child_name("hotkeys_panel")
 
-def _on_button1_clicked(button):
-    on_button1_clicked(button, stack)
-
-def _on_button2_clicked(button):
-    on_button2_clicked(button, stack)
-
-def _on_button_intro_topic_clicked(button):
-    panel_name = "hotkeys_intro_panel"
-    # Если уже есть такая панель — просто переключаемся
-    if stack.get_child_by_name(panel_name):
-        stack.set_visible_child_name(panel_name)
-        return
-    # Если нет — создаём и добавляем
-    panel, _, back_button = get_intro_panel()
-    back_button.connect("clicked", _on_back_clicked)
-    stack.add_named(panel, panel_name)
+def on_button_intro_topic_clicked(button):
+    intro_panel, panel_name = get_intro_panel()
+    stack.add_named(intro_panel, panel_name)
     stack.set_visible_child_name(panel_name)
 
-def _on_button3_clicked(button):
-    on_button3_clicked(button, stack)
+def on_button3_clicked(button):
+    stack.set_visible_child_name("file_manager_panel")
 
-def _on_button4_clicked(button):
-    on_button4_clicked(button, stack)
+def on_button4_clicked(button):
+    stack.set_visible_child_name("packages_and_installing_panel")
 
 def on_activate(app):
     window = Gtk.ApplicationWindow(application=app)
@@ -82,8 +67,8 @@ def on_activate(app):
 
     # Right top box (справа)
     right_top_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
-    right_top_box.set_halign(Gtk.Align.END)
-    right_top_box.set_hexpand(True)
+    right_top_box.set_halign(Gtk.Align.END)  # Прижимаем к правому краю
+    right_top_box.set_hexpand(True)  # Занимаем всё доступное пространство справа
     top_box.append(right_top_box)
 
     # Top label in main box
@@ -94,11 +79,11 @@ def on_activate(app):
 
     # Switch lang button
     lang_button = Gtk.Button(label="En")
-    lang_button.connect("clicked", _on_language_clicked)
+    lang_button.connect("clicked", on_language_clicked)
     lang_button.add_css_class("lang-button")
     lang_button.set_size_request(50, 50)
-    lang_button.set_halign(Gtk.Align.END)
-    lang_button.set_valign(Gtk.Align.END)
+    lang_button.set_halign(Gtk.Align.END)  # Центрируем внутри right_top_box
+    lang_button.set_valign(Gtk.Align.END)  # Центрируем вертикально
     lang_button.set_hexpand(False)
     lang_button.set_vexpand(False)
     right_top_box.append(lang_button)
@@ -121,25 +106,25 @@ def on_activate(app):
 
     # Terminal button
     button1 = Gtk.Button(label="Linux Terminal")
-    button1.connect("clicked", _on_button1_clicked)
+    button1.connect("clicked", on_button1_clicked)
     button1.add_css_class("custom-button1")
     box_horiz1.append(button1)
 
     # Hotkeys button
     button2 = Gtk.Button(label="Hotkeys")
-    button2.connect("clicked", _on_button2_clicked)
+    button2.connect("clicked", on_button2_clicked)
     button2.add_css_class("custom-button2")
     box_horiz1.append(button2)
 
     # File manager button
     button3 = Gtk.Button(label="File manager")
-    button3.connect("clicked", _on_button3_clicked)
+    button3.connect("clicked", on_button3_clicked)
     button3.add_css_class("custom-button3")
     box_horiz2.append(button3)
 
     # Packages & installing button
     button4 = Gtk.Button(label="Packages & installing")
-    button4.connect("clicked", _on_button4_clicked)
+    button4.connect("clicked", on_button4_clicked)
     button4.add_css_class("custom-button3")
     box_horiz2.append(button4)
 
@@ -147,8 +132,10 @@ def on_activate(app):
     main_box.append(box_horiz1)
     main_box.append(box_horiz2)
 
+    # Устанавливаем main_box как дочерний элемент scrolled_window
     scrolled_window.set_child(main_box)
 
+    # Добавляем scrolled_window в stack
     stack.add_named(scrolled_window, "main_panel")
 
 
@@ -166,7 +153,7 @@ def on_activate(app):
 
     #Back button
     back_button = Gtk.Button(label="‹")
-    back_button.connect("clicked", _on_back_clicked)
+    back_button.connect("clicked", on_back_clicked)
     back_button.add_css_class("back-button1")
     main_box_panel2.append(back_button)
 
@@ -188,16 +175,16 @@ def on_activate(app):
 
     # Back button
     back_button = Gtk.Button(label="‹")
-    back_button.connect("clicked", _on_back_clicked)
+    back_button.connect("clicked", on_back_clicked)
     back_button.add_css_class("back-button1")
-    back_button.set_size_request(50, 50)
-    back_button.set_halign(Gtk.Align.START)
-    back_button.set_hexpand(False)
+    back_button.set_size_request(50, 50)  # Фиксированная ширина и высота
+    back_button.set_halign(Gtk.Align.START)  # Прижимаем к левому краю
+    back_button.set_hexpand(False)  # Отключаем растяжение кнопки
     main_box_panel3.append(back_button)
 
     # intro button topic
     button_intro_topic = Gtk.Button(label="Hotkeys")
-    button_intro_topic.connect("clicked", _on_button_intro_topic_clicked)
+    button_intro_topic.connect("clicked", on_button_intro_topic_clicked)
     button_intro_topic.add_css_class("button-intro-topic")
     main_box_panel3.append(button_intro_topic)
 
@@ -219,7 +206,7 @@ def on_activate(app):
 
     #Back button
     back_button = Gtk.Button(label="‹")
-    back_button.connect("clicked", _on_back_clicked)
+    back_button.connect("clicked", on_back_clicked)
     back_button.add_css_class("back-button1")
     main_box_panel4.append(back_button)
 
@@ -239,7 +226,7 @@ def on_activate(app):
 
     #Back button
     back_button = Gtk.Button(label="‹")
-    back_button.connect("clicked", _on_back_clicked)
+    back_button.connect("clicked", on_back_clicked)
     back_button.add_css_class("back-button1")
     main_box_panel5.append(back_button)
 
@@ -248,12 +235,14 @@ def on_activate(app):
     
     
     
+    # Создаём CSS-провайдер для стилей кнопок
     css_provider = Gtk.CssProvider()
     try:
         css_provider.load_from_path("./styles/main.css")
     except Exception as e:
         print(f"Error to load CSS: {e}")
 
+    # Применяем CSS
     try:
         Gtk.StyleContext.add_provider_for_display(
             window.get_display(),
@@ -264,16 +253,17 @@ def on_activate(app):
         print(f"Application Error CSS: {e}")
 
 
+    # Устанавливаем контейнер как содержимое окна
     window.set_child(stack)
 
+    # Показываем окно
     window.present()
 
 def main():
+    # Создаём приложение с валидным application_id
     app = Adw.Application(application_id="com.example.simpleapp")
     app.connect("activate", on_activate)
     app.run(None)
 
 if __name__ == "__main__":
     main()
-
-__all__ = ["on_back_clicked"]
