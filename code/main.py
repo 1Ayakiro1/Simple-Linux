@@ -4,7 +4,7 @@ import os
 gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
 from gi.repository import Gtk, Adw
-from common import get_intro_panel,get_gnomehotk_panel,get_kdehotk_panel,get_terminalhotk_panel
+from common import get_intro_panel,get_gnomehotk_panel,get_kdehotk_panel,get_terminalhotk_panel,get_intro_in_packages_panel,get_appimage_panel,get_deb_panel,get_rpm_panel,get_snap_panel,get_tar_panel,get_flatpack_panel,get_zst_panel
 
 # Создаём Stack для переключения панелей
 stack = Gtk.Stack()
@@ -53,6 +53,26 @@ def _on_button_kdehotk_topic_clicked(button):
     stack.add_named(panel, panel_name)
     stack.set_visible_child_name(panel_name)
 
+def _on_button_intro_in_packages_clicked(button):
+    panel_name = "hotkeys_intro_panel"
+    if stack.get_child_by_name(panel_name):
+        stack.set_visible_child_name(panel_name)
+        return
+    panel, _, back_button = get_intro_in_packages_panel()
+    back_button.connect("clicked", on_back_clicked)
+    stack.add_named(panel, panel_name)
+    stack.set_visible_child_name(panel_name)
+
+def _on_button_appimage_clicked(button):
+    panel_name = "hotkeys_intro_panel"
+    if stack.get_child_by_name(panel_name):
+        stack.set_visible_child_name(panel_name)
+        return
+    panel, _, back_button = get_appimage_panel()
+    back_button.connect("clicked", on_back_clicked)
+    stack.add_named(panel, panel_name)
+    stack.set_visible_child_name(panel_name)
+
 def _on_button_terminalhotk_topic_clicked(button):
     panel_name = "hotkeys_intro_panel"
     if stack.get_child_by_name(panel_name):
@@ -62,6 +82,67 @@ def _on_button_terminalhotk_topic_clicked(button):
     back_button.connect("clicked", on_back_clicked)
     stack.add_named(panel, panel_name)
     stack.set_visible_child_name(panel_name)
+
+def _on_button_deb_clicked(button):
+    panel_name = "hotkeys_intro_panel"
+    if stack.get_child_by_name(panel_name):
+        stack.set_visible_child_name(panel_name)
+        return
+    panel, _, back_button = get_deb_panel()
+    back_button.connect("clicked", on_back_clicked)
+    stack.add_named(panel, panel_name)
+    stack.set_visible_child_name(panel_name)
+
+def _on_button_rpm_clicked(button):
+    panel_name = "hotkeys_intro_panel"
+    if stack.get_child_by_name(panel_name):
+        stack.set_visible_child_name(panel_name)
+        return
+    panel, _, back_button = get_rpm_panel()
+    back_button.connect("clicked", on_back_clicked)
+    stack.add_named(panel, panel_name)
+    stack.set_visible_child_name(panel_name)
+
+def _on_button_snap_clicked(button):
+    panel_name = "hotkeys_intro_panel"
+    if stack.get_child_by_name(panel_name):
+        stack.set_visible_child_name(panel_name)
+        return
+    panel, _, back_button = get_snap_panel()
+    back_button.connect("clicked", on_back_clicked)
+    stack.add_named(panel, panel_name)
+    stack.set_visible_child_name(panel_name)
+
+def _on_button_tar_clicked(button):
+    panel_name = "hotkeys_intro_panel"
+    if stack.get_child_by_name(panel_name):
+        stack.set_visible_child_name(panel_name)
+        return
+    panel, _, back_button = get_tar_panel()
+    back_button.connect("clicked", on_back_clicked)
+    stack.add_named(panel, panel_name)
+    stack.set_visible_child_name(panel_name)
+
+def _on_button_flatpack_clicked(button):
+    panel_name = "hotkeys_intro_panel"
+    if stack.get_child_by_name(panel_name):
+        stack.set_visible_child_name(panel_name)
+        return
+    panel, _, back_button = get_flatpack_panel()
+    back_button.connect("clicked", on_back_clicked)
+    stack.add_named(panel, panel_name)
+    stack.set_visible_child_name(panel_name)
+
+def _on_button_zst_clicked(button):
+    panel_name = "hotkeys_intro_panel"
+    if stack.get_child_by_name(panel_name):
+        stack.set_visible_child_name(panel_name)
+        return
+    panel, _, back_button = get_zst_panel()
+    back_button.connect("clicked", on_back_clicked)
+    stack.add_named(panel, panel_name)
+    stack.set_visible_child_name(panel_name)
+
 
 def on_button3_clicked(button):
     stack.set_visible_child_name("file_manager_panel")
@@ -234,7 +315,7 @@ def on_activate(app):
     main_box_panel3.append(button_kdehotk_topic)
 
     button_terminalhotk_topic = Gtk.Button(label="Terminal Hotkeys")
-    button_terminalhotk_topic.connect("clicked", _on_button_kdehotk_topic_clicked)
+    button_terminalhotk_topic.connect("clicked", _on_button_terminalhotk_topic_clicked)
     button_terminalhotk_topic.add_css_class("button-intro-topic")
     main_box_panel3.append(button_terminalhotk_topic)
 
@@ -278,7 +359,51 @@ def on_activate(app):
     back_button = Gtk.Button(label="‹")
     back_button.connect("clicked", on_back_clicked)
     back_button.add_css_class("back-button1")
+    back_button.set_size_request(50, 50)  # Фиксированная ширина и высота
+    back_button.set_halign(Gtk.Align.START)  # Прижимаем к левому краю
+    back_button.set_hexpand(False) 
     main_box_panel5.append(back_button)
+
+    button_intro_in_packages_topic = Gtk.Button(label="Intro in packages")
+    button_intro_in_packages_topic.connect("clicked", _on_button_intro_in_packages_clicked)
+    button_intro_in_packages_topic.add_css_class("button-intro-topic")
+    main_box_panel5.append(button_intro_in_packages_topic)
+
+    button_appimage_topic = Gtk.Button(label="Appimage")
+    button_appimage_topic.connect("clicked", _on_button_appimage_clicked)
+    button_appimage_topic.add_css_class("button-intro-topic")
+    main_box_panel5.append(button_appimage_topic)
+
+    button_deb_topic = Gtk.Button(label="Deb")
+    button_deb_topic.connect("clicked", _on_button_deb_clicked)
+    button_deb_topic.add_css_class("button-intro-topic")
+    main_box_panel5.append(button_deb_topic)
+
+    button_rpm_topic = Gtk.Button(label="RPM")
+    button_rpm_topic.connect("clicked", _on_button_rpm_clicked)
+    button_rpm_topic.add_css_class("button-intro-topic")
+    main_box_panel5.append(button_rpm_topic)
+
+    button_snap_topic = Gtk.Button(label="Snap")
+    button_snap_topic.connect("clicked", _on_button_snap_clicked)
+    button_snap_topic.add_css_class("button-intro-topic")
+    main_box_panel5.append(button_snap_topic)
+
+    button_tar_topic = Gtk.Button(label="Tar")
+    button_tar_topic.connect("clicked", _on_button_tar_clicked)
+    button_tar_topic.add_css_class("button-intro-topic")
+    main_box_panel5.append(button_tar_topic)
+
+    button_flatpack_topic = Gtk.Button(label="Flatpack")
+    button_flatpack_topic.connect("clicked", _on_button_flatpack_clicked)
+    button_flatpack_topic.add_css_class("button-intro-topic")
+    main_box_panel5.append(button_flatpack_topic)
+
+    button_zst_topic = Gtk.Button(label="ZST")
+    button_zst_topic.connect("clicked", _on_button_zst_clicked)
+    button_zst_topic.add_css_class("button-intro-topic")
+    button_zst_topic.set_margin_bottom(20)
+    main_box_panel5.append(button_zst_topic)
 
     stack.add_named(main_box_panel5, "packages_and_installing_panel")
     
