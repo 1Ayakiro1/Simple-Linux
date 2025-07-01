@@ -1,4 +1,6 @@
-# handlers.py
+# Это файл,где хранятся функции-обработчики для разных кнопок и событий интерфейса
+
+
 
 def on_back_clicked(button, stack):
     stack.set_visible_child_name("main_panel")
@@ -23,6 +25,11 @@ def on_button_intro_topic_clicked(button, stack, get_intro_panel):
 def on_button_intro_gnomehotk_clicked(button, stack, get_gnomehotk_panel):
     gnomehotk_panel, panel_name = get_gnomehotk_panel()
     stack.add_named(gnomehotk_panel, panel_name)
+    stack.set_visible_child_name(panel_name)
+
+def on_button_kdehotk_clicked(button, stack, get_kdehotk_panel):
+    kdehotk_panel, panel_name = get_kdehotk_panel()
+    stack.add_named(kdehotk_panel, panel_name)
     stack.set_visible_child_name(panel_name)
 
 def on_button3_clicked(button, stack):

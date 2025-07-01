@@ -4,7 +4,7 @@ import os
 gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
 from gi.repository import Gtk, Adw
-from common import get_intro_panel,get_gnomehotk_panel
+from common import get_intro_panel,get_gnomehotk_panel,get_kdehotk_panel
 
 # Создаём Stack для переключения панелей
 stack = Gtk.Stack()
@@ -39,6 +39,16 @@ def _on_button_gnomehotk_topic_clicked(button):
         stack.set_visible_child_name(panel_name)
         return
     panel, _, back_button = get_gnomehotk_panel()
+    back_button.connect("clicked", on_back_clicked)
+    stack.add_named(panel, panel_name)
+    stack.set_visible_child_name(panel_name)
+
+def _on_button_kdehotk_topic_clicked(button):
+    panel_name = "hotkeys_intro_panel"
+    if stack.get_child_by_name(panel_name):
+        stack.set_visible_child_name(panel_name)
+        return
+    panel, _, back_button = get_kdehotk_panel()
     back_button.connect("clicked", on_back_clicked)
     stack.add_named(panel, panel_name)
     stack.set_visible_child_name(panel_name)
@@ -207,6 +217,11 @@ def on_activate(app):
     button_gnomehotk_topic.connect("clicked", _on_button_gnomehotk_topic_clicked)
     button_gnomehotk_topic.add_css_class("button-intro-topic")
     main_box_panel3.append(button_gnomehotk_topic)
+
+    button_kdehotk_topic = Gtk.Button(label="KDE Hotkeys")
+    button_kdehotk_topic.connect("clicked", _on_button_kdehotk_topic_clicked)
+    button_kdehotk_topic.add_css_class("button-intro-topic")
+    main_box_panel3.append(button_kdehotk_topic)
 
     scrolled_window_panel3.set_child(main_box_panel3)
     stack.add_named(scrolled_window_panel3, "hotkeys_panel")
