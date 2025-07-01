@@ -70,21 +70,23 @@
     margin-bottom: 10px;
 }
 
-.lang-button{
-    background-color: transparent;
-    color: #ffffff;
-    border-radius: 100%;
-    padding: 10px 20px;
-    font-size: 14px;
-    
+.lang-button {
+    background: transparent;
+    box-shadow: none;
+    border: none;
+    outline: none;
+    min-height: 36px;
+    min-width: 36px;
+    margin-top: 12px;
+    padding: 0 8px;
 }
 
-.lang-button:hover {
-    background-color: rgb(82, 82, 82);
-    color: #ffffff;
-    /* margin-left: auto; */
+.lang-button:hover, .lang-button:active, .lang-button:focus {
+    background: transparent;
+    box-shadow: none;
+    border: none;
+    outline: none;
 }
-
 
 /* SECOND PANEL */
 

@@ -183,40 +183,32 @@ def on_activate(app):
     main_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=10)
     main_box.set_valign(Gtk.Align.START)
 
-    # Top Box in main box
-    top_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
-    top_box.set_halign(Gtk.Align.CENTER)
-    top_box.set_hexpand(True)
-    main_box.append(top_box)
+    # --- Новый top bar на CenterBox ---
+    center_box = Gtk.CenterBox()
+    center_box.set_hexpand(True)
+    center_box.set_halign(Gtk.Align.FILL)
+    center_box.set_valign(Gtk.Align.START)
+    center_box.set_margin_top(0)
+    center_box.set_margin_bottom(0)
+    center_box.set_margin_start(0)
+    center_box.set_margin_end(0)
 
-    # Left top box (центр)
-    left_top_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
-    left_top_box.set_halign(Gtk.Align.CENTER)
-    top_box.append(left_top_box)
-
-    # Right top box (справа)
-    right_top_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
-    right_top_box.set_halign(Gtk.Align.END)  # Прижимаем к правому краю
-    right_top_box.set_hexpand(True)  # Занимаем всё доступное пространство справа
-    top_box.append(right_top_box)
-
-    # Top label in main box
+    # Top label
     label = Gtk.Label(label=translations[current_language]["main_title"])
     label.add_css_class("custom-label")
     label.set_halign(Gtk.Align.CENTER)
-    left_top_box.append(label)
+    label.set_hexpand(True)
+    center_box.set_center_widget(label)
 
     # Switch lang button
     lang_button = Gtk.MenuButton(label="En")
     lang_button.add_css_class("lang-button")
-    lang_button.set_size_request(50, 50)
     lang_button.set_halign(Gtk.Align.END)
     lang_button.set_valign(Gtk.Align.START)
     lang_button.set_hexpand(False)
     lang_button.set_vexpand(False)
-    right_top_box.append(lang_button)
 
-    # --- Popover для выбора языка ---
+    # --- Popover for language selection ---
     popover = Gtk.Popover()
     box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
     languages = [
@@ -234,7 +226,7 @@ def on_activate(app):
         lang_button.set_label(lang_code.upper())
         print(f"Language changed to: {lang_code}")
         popover.popdown()
-        # TODO: обновить все тексты в интерфейсе
+
     for lang_name, lang_code in languages:
         btn = Gtk.Button(label=lang_name)
         btn.add_css_class("lang-choice-btn")
@@ -246,10 +238,14 @@ def on_activate(app):
         box.append(btn)
     popover.set_child(box)
     popover.set_has_arrow(True)
-    popover.set_size_request(180, 240)  # Ещё компактнее
+    popover.set_size_request(180, 240)
     box.set_halign(Gtk.Align.CENTER)
     box.set_valign(Gtk.Align.CENTER)
     lang_button.set_popover(popover)
+
+    center_box.set_end_widget(lang_button)
+
+    main_box.append(center_box)
 
     # Box for buttons
     box_horiz1 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
