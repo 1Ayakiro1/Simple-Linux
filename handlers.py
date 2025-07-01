@@ -77,6 +77,45 @@ def on_button_zst_clicked(button, stack, get_zst_panel):
     stack.add_named(zst_panel, panel_name)
     stack.set_visible_child_name(panel_name)
 
+def on_button_auto_and_scripts_clicked(button, stack, get_auto_and_scripts_panel):
+    auto_and_scripts_panel, panel_name = get_auto_and_scripts_panel()
+    stack.add_named(auto_and_scripts_panel, panel_name)
+    stack.set_visible_child_name(panel_name)
+
+def on_button_files_and_directories_clicked(button, stack, get_files_and_directories_panel):
+    files_and_directories_panel, panel_name = get_files_and_directories_panel()
+    stack.add_named(files_and_directories_panel, panel_name)
+    stack.set_visible_child_name(panel_name)
+
+def on_button_intro_in_terminal_clicked(button, stack, get_intro_in_terminal_panel):
+    intro_in_terminal_panel, panel_name = get_intro_in_terminal_panel()
+    stack.add_named(intro_in_terminal_panel, panel_name)
+    stack.set_visible_child_name(panel_name)
+
+def on_button_lifehacks_clicked(button, stack, get_lifehacks_panel):
+    lifehacks_panel, panel_name = get_lifehacks_panel()
+    stack.add_named(lifehacks_panel, panel_name)
+    stack.set_visible_child_name(panel_name)
+
+def on_button_navigation_clicked(button, stack, get_navigation_panel):
+    navigation_panel, panel_name = get_navigation_panel()
+    stack.add_named(navigation_panel, panel_name)
+    stack.set_visible_child_name(panel_name)
+
+def on_button_network_clicked(button, stack, get_network_panel):
+    network_panel, panel_name = get_network_panel()
+    stack.add_named(network_panel, panel_name)
+    stack.set_visible_child_name(panel_name)
+
+def on_button_processes_clicked(button, stack, get_processes_panel):
+    processes_panel, panel_name = get_processes_panel()
+    stack.add_named(processes_panel, panel_name)
+    stack.set_visible_child_name(panel_name)
+
+def on_button_utils_clicked(button, stack, get_utils_panel):
+    utils_panel, panel_name = get_utils_panel()
+    stack.add_named(utils_panel, panel_name)
+    stack.set_visible_child_name(panel_name)
 
 
 

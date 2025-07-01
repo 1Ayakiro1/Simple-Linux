@@ -12,6 +12,14 @@ from packages_chapters.snap import get_snap_panel as _get_snap_panel
 from packages_chapters.tar import get_tar_panel as _get_tar_panel
 from packages_chapters.flatpack import get_flatpack_panel as _get_flatpack_panel
 from packages_chapters.zst import get_zst_panel as _get_zst_panel
+from linux_term_chapters.auto_and_scripts import get_auto_and_scripts_panel as _get_auto_and_scripts_panel
+from linux_term_chapters.files_and_directories import get_files_and_directories_panel as _get_files_and_directories_panel
+from linux_term_chapters.intro_in_terminal import get_intro_in_terminal_panel as _get_intro_in_terminal_panel
+from linux_term_chapters.lifehacks import get_lifehacks_panel as _get_lifehacks_panel
+from linux_term_chapters.navigation import get_navigation_panel as _get_navigation_panel
+from linux_term_chapters.network import get_network_panel as _get_network_panel
+from linux_term_chapters.processes import get_processes_panel as _get_processes_panel
+from linux_term_chapters.utils import get_utils_panel as _get_utils_panel
 from gi.repository import Gtk
 from language_panel import get_language_panel as _get_language_panel
 
@@ -53,5 +61,29 @@ def get_zst_panel():
 
 def get_language_panel():
     return _get_language_panel()
+
+def get_auto_and_scripts_panel():
+    return _get_auto_and_scripts_panel()
+
+def get_files_and_directories_panel():
+    return _get_files_and_directories_panel()
+
+def get_intro_in_terminal_panel():
+    return _get_intro_in_terminal_panel()
+
+def get_lifehacks_panel():
+    return _get_lifehacks_panel()
+
+def get_navigation_panel():
+    return _get_navigation_panel()
+
+def get_network_panel():
+    return _get_network_panel()
+
+def get_processes_panel():
+    return _get_processes_panel()
+
+def get_utils_panel():
+    return _get_utils_panel()
 
 
