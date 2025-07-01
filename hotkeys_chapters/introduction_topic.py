@@ -2,7 +2,7 @@ import gi
 gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
 from gi.repository import Gtk, Adw
-from handlers import on_back_clicked
+from handlers import on_back_clicked, on_back_clicked_intro1
 from code.text import hotkeys_text
 
 scrolled_window_intro_topic = Gtk.ScrolledWindow()

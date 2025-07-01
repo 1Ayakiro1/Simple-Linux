@@ -12,9 +12,17 @@ def on_button1_clicked(button, stack):
 def on_button2_clicked(button, stack):
     stack.set_visible_child_name("hotkeys_panel")
 
+def on_back_clicked_intro1(button, stack):
+    stack.set_visible_child_name("hotkeys_panel")
+
 def on_button_intro_topic_clicked(button, stack, get_intro_panel):
     intro_panel, panel_name = get_intro_panel()
     stack.add_named(intro_panel, panel_name)
+    stack.set_visible_child_name(panel_name)
+
+def on_button_intro_gnomehotk_clicked(button, stack, get_gnomehotk_panel):
+    gnomehotk_panel, panel_name = get_gnomehotk_panel()
+    stack.add_named(gnomehotk_panel, panel_name)
     stack.set_visible_child_name(panel_name)
 
 def on_button3_clicked(button, stack):

@@ -4,7 +4,7 @@ import os
 gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
 from gi.repository import Gtk, Adw
-from common import get_intro_panel
+from common import get_intro_panel,get_gnomehotk_panel
 
 # Создаём Stack для переключения панелей
 stack = Gtk.Stack()
@@ -23,9 +23,24 @@ def on_button1_clicked(button):
 def on_button2_clicked(button):
     stack.set_visible_child_name("hotkeys_panel")
 
-def on_button_intro_topic_clicked(button):
-    intro_panel, panel_name = get_intro_panel()
-    stack.add_named(intro_panel, panel_name)
+def _on_button_intro_topic_clicked(button):
+    panel_name = "hotkeys_intro_panel"
+    if stack.get_child_by_name(panel_name):
+        stack.set_visible_child_name(panel_name)
+        return
+    panel, _, back_button = get_intro_panel()
+    back_button.connect("clicked", on_back_clicked)
+    stack.add_named(panel, panel_name)
+    stack.set_visible_child_name(panel_name)
+
+def _on_button_gnomehotk_topic_clicked(button):
+    panel_name = "hotkeys_intro_panel"
+    if stack.get_child_by_name(panel_name):
+        stack.set_visible_child_name(panel_name)
+        return
+    panel, _, back_button = get_gnomehotk_panel()
+    back_button.connect("clicked", on_back_clicked)
+    stack.add_named(panel, panel_name)
     stack.set_visible_child_name(panel_name)
 
 def on_button3_clicked(button):
@@ -184,9 +199,14 @@ def on_activate(app):
 
     # intro button topic
     button_intro_topic = Gtk.Button(label="Hotkeys")
-    button_intro_topic.connect("clicked", on_button_intro_topic_clicked)
+    button_intro_topic.connect("clicked", _on_button_intro_topic_clicked)
     button_intro_topic.add_css_class("button-intro-topic")
     main_box_panel3.append(button_intro_topic)
+
+    button_gnomehotk_topic = Gtk.Button(label="Gnome Hotkeys")
+    button_gnomehotk_topic.connect("clicked", _on_button_gnomehotk_topic_clicked)
+    button_gnomehotk_topic.add_css_class("button-intro-topic")
+    main_box_panel3.append(button_gnomehotk_topic)
 
     scrolled_window_panel3.set_child(main_box_panel3)
     stack.add_named(scrolled_window_panel3, "hotkeys_panel")
