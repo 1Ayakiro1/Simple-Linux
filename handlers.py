@@ -32,6 +32,12 @@ def on_button_kdehotk_clicked(button, stack, get_kdehotk_panel):
     stack.add_named(kdehotk_panel, panel_name)
     stack.set_visible_child_name(panel_name)
 
+def on_button_terminalhotk_clicked(button, stack, get_terminalhotk_panel):
+    terminalhotk_panel, panel_name = get_terminalhotk_panel()
+    stack.add_named(terminalhotk_panel, panel_name)
+    stack.set_visible_child_name(panel_name)
+
+
 def on_button3_clicked(button, stack):
     stack.set_visible_child_name("file_manager_panel")
 
