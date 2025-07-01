@@ -133,3 +133,22 @@
 .button-intro-topic:hover {
     background-color: #1e87d6;
 }
+
+.lang-choice-btn {
+    background-color: #232323;
+    color: #fff;
+    border-radius: 16px;
+    font-size: 14px;
+    min-width: 80px;
+    min-height: 28px;
+    padding: 4px 16px;
+    margin: 2px 0;
+    border: none;
+    transition: background 0.2s, color 0.2s;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+.lang-choice-btn:hover {
+    background-color: #1e87d6;
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(30,135,214,0.15);
+}

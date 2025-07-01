@@ -4,7 +4,8 @@ import os
 gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
 from gi.repository import Gtk, Adw
-from common import get_intro_panel,get_gnomehotk_panel,get_kdehotk_panel,get_terminalhotk_panel,get_intro_in_packages_panel,get_appimage_panel,get_deb_panel,get_rpm_panel,get_snap_panel,get_tar_panel,get_flatpack_panel,get_zst_panel
+from common import get_intro_panel,get_gnomehotk_panel,get_kdehotk_panel,get_terminalhotk_panel,get_intro_in_packages_panel,get_appimage_panel,get_deb_panel,get_rpm_panel,get_snap_panel,get_tar_panel,get_flatpack_panel,get_zst_panel, get_language_panel
+from translations import translations
 
 # Создаём Stack для переключения панелей
 stack = Gtk.Stack()
@@ -13,6 +14,8 @@ stack.set_transition_type(Gtk.StackTransitionType.SLIDE_LEFT_RIGHT)  # Set anima
 #Back_button_func
 def on_back_clicked(button):
     stack.set_visible_child_name("main_panel")
+
+current_language = "en"
 
 def on_language_clicked(button):
     print("Language button clicked")
@@ -143,6 +146,15 @@ def _on_button_zst_clicked(button):
     stack.add_named(panel, panel_name)
     stack.set_visible_child_name(panel_name)
 
+def _on_language_clicked(button):
+    panel_name = "language_panel"
+    if stack.get_child_by_name(panel_name):
+        stack.set_visible_child_name(panel_name)
+        return
+    panel, _, back_button = get_language_panel()
+    back_button.connect("clicked", on_back_clicked)
+    stack.add_named(panel, panel_name)
+    stack.set_visible_child_name(panel_name)
 
 def on_button3_clicked(button):
     stack.set_visible_child_name("file_manager_panel")
@@ -151,6 +163,7 @@ def on_button4_clicked(button):
     stack.set_visible_child_name("packages_and_installing_panel")
 
 def on_activate(app):
+    global window
     window = Gtk.ApplicationWindow(application=app)
     window.set_title("Simple Linux")
     window.set_default_size(1000, 700)
@@ -188,21 +201,55 @@ def on_activate(app):
     top_box.append(right_top_box)
 
     # Top label in main box
-    label = Gtk.Label(label="Let's Begin!")
+    label = Gtk.Label(label=translations[current_language]["main_title"])
     label.add_css_class("custom-label")
     label.set_halign(Gtk.Align.CENTER)
     left_top_box.append(label)
 
     # Switch lang button
-    lang_button = Gtk.Button(label="En")
-    lang_button.connect("clicked", on_language_clicked)
+    lang_button = Gtk.MenuButton(label="En")
     lang_button.add_css_class("lang-button")
     lang_button.set_size_request(50, 50)
-    lang_button.set_halign(Gtk.Align.END)  # Центрируем внутри right_top_box
-    lang_button.set_valign(Gtk.Align.END)  # Центрируем вертикально
+    lang_button.set_halign(Gtk.Align.END)
+    lang_button.set_valign(Gtk.Align.START)
     lang_button.set_hexpand(False)
     lang_button.set_vexpand(False)
     right_top_box.append(lang_button)
+
+    # --- Popover для выбора языка ---
+    popover = Gtk.Popover()
+    box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
+    languages = [
+        ("English", "en"),
+        ("Русский", "ru"),
+        ("中文", "zh"),
+        ("日本語", "ja"),
+        ("Français", "fr"),
+        ("Deutsch", "de"),
+        ("Español", "es"),
+    ]
+    def set_language(lang_code):
+        global current_language
+        current_language = lang_code
+        lang_button.set_label(lang_code.upper())
+        print(f"Language changed to: {lang_code}")
+        popover.popdown()
+        # TODO: обновить все тексты в интерфейсе
+    for lang_name, lang_code in languages:
+        btn = Gtk.Button(label=lang_name)
+        btn.add_css_class("lang-choice-btn")
+        btn.set_size_request(120, 32)
+        btn.set_margin_bottom(2)
+        btn.set_halign(Gtk.Align.CENTER)
+        btn.set_valign(Gtk.Align.CENTER)
+        btn.connect("clicked", lambda b, code=lang_code: set_language(code))
+        box.append(btn)
+    popover.set_child(box)
+    popover.set_has_arrow(True)
+    popover.set_size_request(180, 240)  # Ещё компактнее
+    box.set_halign(Gtk.Align.CENTER)
+    box.set_valign(Gtk.Align.CENTER)
+    lang_button.set_popover(popover)
 
     # Box for buttons
     box_horiz1 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)

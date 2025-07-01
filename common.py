@@ -2,7 +2,7 @@
 
 from hotkeys_chapters.introduction_topic import get_intro_panel as _get_intro_panel
 from hotkeys_chapters.gnomehotk import get_gnomehotk_panel as _get_gnomehotk_panel
-from hotkeys_chapters.kdehotk import get_kdehotk_panel as _get_kdehotk_panel
+from hotkeys_chapters.kdehotk import get_kdehotk_panel as _get_gnomehotk_panel
 from hotkeys_chapters.terminalhotk import get_terminalhotk_panel as _get_terminalhotk_panel
 from packages_chapters.intro_in_packages import get_intro_in_packages_panel as _get_intro_in_packages_panel
 from packages_chapters.appimage import get_appimage_panel as _get_appimage_panel
@@ -13,6 +13,7 @@ from packages_chapters.tar import get_tar_panel as _get_tar_panel
 from packages_chapters.flatpack import get_flatpack_panel as _get_flatpack_panel
 from packages_chapters.zst import get_zst_panel as _get_zst_panel
 from gi.repository import Gtk
+from language_panel import get_language_panel as _get_language_panel
 
 def get_intro_panel():
     return _get_intro_panel()
@@ -49,5 +50,8 @@ def get_flatpack_panel():
 
 def get_zst_panel():
     return _get_zst_panel()
+
+def get_language_panel():
+    return _get_language_panel()
 
 
