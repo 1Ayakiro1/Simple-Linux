@@ -426,31 +426,32 @@ def on_activate(app):
     box_horiz2.set_valign(Gtk.Align.CENTER)
 
     # Terminal button
-    button1 = Gtk.Button(label=translations[current_language]["hotkeys"])
+    button1 = Gtk.Button(label=translations[current_language]["terminal"])
     button1.connect("clicked", on_button1_clicked)
     button1.add_css_class("custom-button1")
     box_horiz1.append(button1)
-    dynamic_main_buttons.append((button1, "hotkeys"))
+    dynamic_main_buttons.append((button1, "terminal"))
 
     # Hotkeys button
-    button2 = Gtk.Button(label=translations[current_language]["file_manager"])
+    button2 = Gtk.Button(label=translations[current_language]["hotkeys"])
     button2.connect("clicked", on_button2_clicked)
     button2.add_css_class("custom-button2")
     box_horiz1.append(button2)
-    dynamic_main_buttons.append((button2, "file_manager"))
+    dynamic_main_buttons.append((button2, "hotkeys"))
 
     # File manager button
-    button3 = Gtk.Button(label=translations[current_language]["packages"])
+    button3 = Gtk.Button(label=translations[current_language]["file_manager"])
     button3.connect("clicked", on_button3_clicked)
     button3.add_css_class("custom-button3")
     box_horiz2.append(button3)
-    dynamic_main_buttons.append((button3, "packages"))
+    dynamic_main_buttons.append((button3, "file_manager"))
 
     # Packages & installing button
-    button4 = Gtk.Button(label="Packages & installing")
+    button4 = Gtk.Button(label=translations[current_language]["packages"])
     button4.connect("clicked", on_button4_clicked)
     button4.add_css_class("custom-button3")
     box_horiz2.append(button4)
+    dynamic_main_buttons.append((button4, "packages"))
 
     # Append boxes to main_box
     main_box.append(box_horiz1)
@@ -484,45 +485,53 @@ def on_activate(app):
     back_button.set_hexpand(False)
     main_box_panel2.append(back_button)
 
-    button_auto_and_scripts_topic = Gtk.Button(label="Auto & Scripts")
-    button_auto_and_scripts_topic.connect("clicked", _on_button_auto_and_scripts_clicked)
-    button_auto_and_scripts_topic.add_css_class("button-intro-topic")
-    main_box_panel2.append(button_auto_and_scripts_topic)
-
-    button_files_and_directories_topic = Gtk.Button(label="Files & Directories")
-    button_files_and_directories_topic.connect("clicked", _on_button_files_and_directories_clicked)
-    button_files_and_directories_topic.add_css_class("button-intro-topic")
-    main_box_panel2.append(button_files_and_directories_topic)
-
-    button_intro_in_terminal_topic = Gtk.Button(label="Intro in terminal")
+    button_intro_in_terminal_topic = Gtk.Button(label=translations[current_language]["intro_in_terminal"])
     button_intro_in_terminal_topic.connect("clicked", _on_button_intro_in_terminal_clicked)
     button_intro_in_terminal_topic.add_css_class("button-intro-topic")
     main_box_panel2.append(button_intro_in_terminal_topic)
+    dynamic_main_labels.append((button_intro_in_terminal_topic, "intro_in_terminal"))
 
-    button_lifehacks_topic = Gtk.Button(label="Lifehacks")
+    button_auto_and_scripts_topic = Gtk.Button(label=translations[current_language]["auto_and_scripts"])
+    button_auto_and_scripts_topic.connect("clicked", _on_button_auto_and_scripts_clicked)
+    button_auto_and_scripts_topic.add_css_class("button-intro-topic")
+    main_box_panel2.append(button_auto_and_scripts_topic)
+    dynamic_main_labels.append((button_auto_and_scripts_topic, "auto_and_scripts"))
+
+    button_files_and_directories_topic = Gtk.Button(label=translations[current_language]["files_and_directories"])
+    button_files_and_directories_topic.connect("clicked", _on_button_files_and_directories_clicked)
+    button_files_and_directories_topic.add_css_class("button-intro-topic")
+    main_box_panel2.append(button_files_and_directories_topic)
+    dynamic_main_labels.append((button_files_and_directories_topic, "files_and_directories"))
+
+    button_lifehacks_topic = Gtk.Button(label=translations[current_language]["file_manager"])
     button_lifehacks_topic.connect("clicked", _on_button_lifehacks_clicked)
     button_lifehacks_topic.add_css_class("button-intro-topic")
     main_box_panel2.append(button_lifehacks_topic)
+    dynamic_main_labels.append((button_lifehacks_topic, "lifehacks"))
 
-    button_navigation_topic = Gtk.Button(label="Navigation")
+    button_navigation_topic = Gtk.Button(label=translations[current_language]["navigation"])
     button_navigation_topic.connect("clicked", _on_button_navigation_clicked)
     button_navigation_topic.add_css_class("button-intro-topic")
     main_box_panel2.append(button_navigation_topic)
+    dynamic_main_labels.append(( button_navigation_topic, "navigation"))
 
-    button_network_topic = Gtk.Button(label="Network")
+    button_network_topic = Gtk.Button(label=translations[current_language]["network"])
     button_network_topic.connect("clicked", _on_button_network_clicked)
     button_network_topic.add_css_class("button-intro-topic")
     main_box_panel2.append(button_network_topic)
+    dynamic_main_labels.append((button_network_topic, "network"))
 
-    button_processes_topic = Gtk.Button(label="Processes")
+    button_processes_topic = Gtk.Button(label=translations[current_language]["processes"])
     button_processes_topic.connect("clicked", _on_button_processes_clicked)
     button_processes_topic.add_css_class("button-intro-topic")
     main_box_panel2.append(button_processes_topic)
+    dynamic_main_labels.append((button_processes_topic, "processes"))
 
-    button_utils_topic = Gtk.Button(label="Utils")
+    button_utils_topic = Gtk.Button(label=translations[current_language]["utils"])
     button_utils_topic.connect("clicked", _on_button_utils_clicked)
     button_utils_topic.add_css_class("button-intro-topic")
     main_box_panel2.append(button_utils_topic)
+    dynamic_main_labels.append((button_utils_topic, "utils"))
 
     stack.add_named(main_box_panel2, "linux_terminal_panel")
 
@@ -550,25 +559,29 @@ def on_activate(app):
     main_box_panel3.append(back_button)
 
     # intro button topic
-    button_intro_topic = Gtk.Button(label="Hotkeys")
+    button_intro_topic = Gtk.Button(label=translations[current_language]["hotkeys"])
     button_intro_topic.connect("clicked", _on_button_intro_topic_clicked)
     button_intro_topic.add_css_class("button-intro-topic")
     main_box_panel3.append(button_intro_topic)
+    dynamic_main_labels.append((button_intro_topic, "hotkeys"))
 
-    button_gnomehotk_topic = Gtk.Button(label="Gnome Hotkeys")
+    button_gnomehotk_topic = Gtk.Button(label=translations[current_language]["gnome_hotkeys"])
     button_gnomehotk_topic.connect("clicked", _on_button_gnomehotk_topic_clicked)
     button_gnomehotk_topic.add_css_class("button-intro-topic")
     main_box_panel3.append(button_gnomehotk_topic)
+    dynamic_main_labels.append((button_gnomehotk_topic, "gnome_hotkeys"))
 
-    button_kdehotk_topic = Gtk.Button(label="KDE Hotkeys")
+    button_kdehotk_topic = Gtk.Button(label=translations[current_language]["kde_hotkeys"])
     button_kdehotk_topic.connect("clicked", _on_button_kdehotk_topic_clicked)
     button_kdehotk_topic.add_css_class("button-intro-topic")
     main_box_panel3.append(button_kdehotk_topic)
+    dynamic_main_labels.append((button_kdehotk_topic, "kde_hotkeys"))
 
-    button_terminalhotk_topic = Gtk.Button(label="Terminal Hotkeys")
+    button_terminalhotk_topic = Gtk.Button(label=translations[current_language]["terminal_hotkeys"])
     button_terminalhotk_topic.connect("clicked", _on_button_terminalhotk_topic_clicked)
     button_terminalhotk_topic.add_css_class("button-intro-topic")
     main_box_panel3.append(button_terminalhotk_topic)
+    dynamic_main_labels.append((button_terminalhotk_topic, "terminal_hotkeys"))
 
     scrolled_window_panel3.set_child(main_box_panel3)
     stack.add_named(scrolled_window_panel3, "hotkeys_panel")
@@ -595,45 +608,53 @@ def on_activate(app):
     back_button.set_hexpand(False)
     main_box_panel4.append(back_button)
 
-    button_intro_in_files_topic = Gtk.Button(label="Introduction")
+    button_intro_in_files_topic = Gtk.Button(label=translations[current_language]["introduction"])
     button_intro_in_files_topic.connect("clicked", _on_button_intro_in_files_clicked)
     button_intro_in_files_topic.add_css_class("button-intro-topic")
     main_box_panel4.append(button_intro_in_files_topic)
+    dynamic_main_labels.append((button_intro_in_files_topic, "introduction"))
 
-    button_bouble_commander_topic = Gtk.Button(label="Bouble Commander")
+    button_bouble_commander_topic = Gtk.Button(label=translations[current_language]["double_commander"])
     button_bouble_commander_topic.connect("clicked", _on_button_bouble_commander_clicked)
     button_bouble_commander_topic.add_css_class("button-intro-topic")
     main_box_panel4.append(button_bouble_commander_topic)
+    dynamic_main_labels.append((button_bouble_commander_topic, "double_commander"))
 
-    button_caja_topic = Gtk.Button(label="Caja")
+    button_caja_topic = Gtk.Button(label=translations[current_language]["caja"])
     button_caja_topic.connect("clicked", _on_button_caja_clicked)
     button_caja_topic.add_css_class("button-intro-topic")
     main_box_panel4.append(button_caja_topic)
+    dynamic_main_labels.append((button_caja_topic, "caja"))
 
-    button_dolphin_topic = Gtk.Button(label="Dolphin")
+    button_dolphin_topic = Gtk.Button(label=translations[current_language]["dolphin"])
     button_dolphin_topic.connect("clicked", _on_button_dolphin_clicked)
     button_dolphin_topic.add_css_class("button-intro-topic")
     main_box_panel4.append(button_dolphin_topic)
+    dynamic_main_labels.append((button_dolphin_topic, "dolphin"))
 
-    button_gnome_commander_topic = Gtk.Button(label="Gnome Commander")
+    button_gnome_commander_topic = Gtk.Button(label=translations[current_language]["gnome_commander"])
     button_gnome_commander_topic.connect("clicked", _on_button_gnome_commander_clicked)
     button_gnome_commander_topic.add_css_class("button-intro-topic")
     main_box_panel4.append(button_gnome_commander_topic)
+    dynamic_main_labels.append((button_gnome_commander_topic, "gnome_commander"))
 
-    button_nautilus_topic = Gtk.Button(label="Nautilus")
+    button_nautilus_topic = Gtk.Button(label=translations[current_language]["nautilus"])
     button_nautilus_topic.connect("clicked", _on_button_nautilus_clicked)
     button_nautilus_topic.add_css_class("button-intro-topic")
     main_box_panel4.append(button_nautilus_topic)
+    dynamic_main_labels.append((button_nautilus_topic, "nautilus"))
 
-    button_sunflower_topic = Gtk.Button(label="Sunflower")
+    button_sunflower_topic = Gtk.Button(label=translations[current_language]["sunflower"])
     button_sunflower_topic.connect("clicked", _on_button_sunflower_clicked)
     button_sunflower_topic.add_css_class("button-intro-topic")
     main_box_panel4.append(button_sunflower_topic)
+    dynamic_main_labels.append((button_sunflower_topic, "sunflower"))
 
-    button_thunar_topic = Gtk.Button(label="Thunar")
+    button_thunar_topic = Gtk.Button(label=translations[current_language]["thunar"])
     button_thunar_topic.connect("clicked", _on_button_thunar_clicked)
     button_thunar_topic.add_css_class("button-intro-topic")
     main_box_panel4.append(button_thunar_topic)
+    dynamic_main_labels.append((button_thunar_topic, "thunar"))
 
     stack.add_named(main_box_panel4, "file_manager_panel")
 
@@ -658,46 +679,54 @@ def on_activate(app):
     back_button.set_hexpand(False) 
     main_box_panel5.append(back_button)
 
-    button_intro_in_packages_topic = Gtk.Button(label="Intro in packages")
+    button_intro_in_packages_topic = Gtk.Button(label=translations[current_language]["intro_in_packages"])
     button_intro_in_packages_topic.connect("clicked", _on_button_intro_in_packages_clicked)
     button_intro_in_packages_topic.add_css_class("button-intro-topic")
     main_box_panel5.append(button_intro_in_packages_topic)
+    dynamic_main_labels.append((button_intro_in_packages_topic, "intro_in_packages"))
 
-    button_appimage_topic = Gtk.Button(label="Appimage")
+    button_appimage_topic = Gtk.Button(label=translations[current_language]["appimage"])
     button_appimage_topic.connect("clicked", _on_button_appimage_clicked)
     button_appimage_topic.add_css_class("button-intro-topic")
     main_box_panel5.append(button_appimage_topic)
+    dynamic_main_labels.append((button_intro_in_packages_topic, "appimage"))
 
-    button_deb_topic = Gtk.Button(label="Deb")
+    button_deb_topic = Gtk.Button(label=translations[current_language]["deb"])
     button_deb_topic.connect("clicked", _on_button_deb_clicked)
     button_deb_topic.add_css_class("button-intro-topic")
     main_box_panel5.append(button_deb_topic)
+    dynamic_main_labels.append((button_intro_in_packages_topic, "deb"))
 
-    button_rpm_topic = Gtk.Button(label="RPM")
+    button_rpm_topic = Gtk.Button(label=translations[current_language]["rpm"])
     button_rpm_topic.connect("clicked", _on_button_rpm_clicked)
     button_rpm_topic.add_css_class("button-intro-topic")
     main_box_panel5.append(button_rpm_topic)
+    dynamic_main_labels.append((button_intro_in_packages_topic, "rpm"))
 
-    button_snap_topic = Gtk.Button(label="Snap")
+    button_snap_topic = Gtk.Button(label=translations[current_language]["snap"])
     button_snap_topic.connect("clicked", _on_button_snap_clicked)
     button_snap_topic.add_css_class("button-intro-topic")
     main_box_panel5.append(button_snap_topic)
+    dynamic_main_labels.append((button_intro_in_packages_topic, "snap"))
 
-    button_tar_topic = Gtk.Button(label="Tar")
+    button_tar_topic = Gtk.Button(label=translations[current_language]["tar"])
     button_tar_topic.connect("clicked", _on_button_tar_clicked)
     button_tar_topic.add_css_class("button-intro-topic")
     main_box_panel5.append(button_tar_topic)
+    dynamic_main_labels.append((button_intro_in_packages_topic, "tar"))
 
-    button_flatpack_topic = Gtk.Button(label="Flatpack")
+    button_flatpack_topic = Gtk.Button(label=translations[current_language]["flatpack"])
     button_flatpack_topic.connect("clicked", _on_button_flatpack_clicked)
     button_flatpack_topic.add_css_class("button-intro-topic")
     main_box_panel5.append(button_flatpack_topic)
+    dynamic_main_labels.append((button_intro_in_packages_topic, "flatpack"))
 
-    button_zst_topic = Gtk.Button(label="ZST")
+    button_zst_topic = Gtk.Button(label=translations[current_language]["zst"])
     button_zst_topic.connect("clicked", _on_button_zst_clicked)
     button_zst_topic.add_css_class("button-intro-topic")
     button_zst_topic.set_margin_bottom(20)
     main_box_panel5.append(button_zst_topic)
+    dynamic_main_labels.append((button_intro_in_packages_topic, "zst"))
 
     stack.add_named(main_box_panel5, "packages_and_installing_panel")
     
@@ -729,18 +758,17 @@ def on_activate(app):
     window.present()
 
 def update_all_texts():
-    # Обновить все лейблы подглав
+    # Updating Labels
     for label, chapter in dynamic_labels:
         label.set_label(chapter_texts[chapter][current_language])
-    # Обновить заголовки
+    # Updating Chapters
     for label, key in dynamic_main_labels:
         label.set_label(translations[current_language][key])
-    # Обновить главные кнопки
+    # Updating main btns
     for button, key in dynamic_main_buttons:
         button.set_label(translations[current_language][key])
 
 def main():
-    # Создаём приложение с валидным application_id
     app = Adw.Application(application_id="com.example.simpleapp")
     app.connect("activate", on_activate)
     app.run(None)
