@@ -20,6 +20,14 @@ from linux_term_chapters.navigation import get_navigation_panel as _get_navigati
 from linux_term_chapters.network import get_network_panel as _get_network_panel
 from linux_term_chapters.processes import get_processes_panel as _get_processes_panel
 from linux_term_chapters.utils import get_utils_panel as _get_utils_panel
+from fileman_chapters.intro_in_files import get_intro_in_files_panel as _get_intro_in_files_panel
+from fileman_chapters.bouble_commander import get_bouble_commander_panel as _get_bouble_commander_panel
+from fileman_chapters.caja import get_caja_panel as _get_caja_panel
+from fileman_chapters.dolphin import get_dolphin_panel as _get_dolphin_panel
+from fileman_chapters.gnome_commander import get_gnome_commander_panel as _get_gnome_commander_panel
+from fileman_chapters.nautilus import get_nautilus_panel as _get_nautilus_panel
+from fileman_chapters.sunflower import get_sunflower_panel as _get_sunflower_panel
+from fileman_chapters.thunar import get_thunar_panel as _get_thunar_panel
 from gi.repository import Gtk
 from language_panel import get_language_panel as _get_language_panel
 
@@ -85,5 +93,29 @@ def get_processes_panel():
 
 def get_utils_panel():
     return _get_utils_panel()
+
+def get_intro_in_files_panel():
+    return _get_intro_in_files_panel()
+
+def get_bouble_commander_panel():
+    return _get_bouble_commander_panel()
+
+def get_caja_panel():
+    return _get_caja_panel()
+
+def get_dolphin_panel():
+    return _get_dolphin_panel()
+
+def get_gnome_commander_panel():
+    return _get_gnome_commander_panel()
+
+def get_nautilus_panel():
+    return _get_nautilus_panel()
+
+def get_sunflower_panel():
+    return _get_sunflower_panel()
+
+def get_thunar_panel():
+    return _get_thunar_panel()
 
 

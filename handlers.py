@@ -117,6 +117,46 @@ def on_button_utils_clicked(button, stack, get_utils_panel):
     stack.add_named(utils_panel, panel_name)
     stack.set_visible_child_name(panel_name)
 
+def on_button_intro_in_files_clicked(button, stack, get_intro_in_files_panel):
+    intro_in_files_panel, panel_name = get_intro_in_files_panel()
+    stack.add_named(intro_in_files_panel, panel_name)
+    stack.set_visible_child_name(panel_name)
+
+def on_button_bouble_commander_clicked(button, stack, get_bouble_commander_panel):
+    bouble_commander_panel, panel_name = get_bouble_commander_panel()
+    stack.add_named(bouble_commander_panel, panel_name)
+    stack.set_visible_child_name(panel_name)
+
+def on_button_caja_clicked(button, stack, get_caja_panel):
+    caja_panel, panel_name = get_caja_panel()
+    stack.add_named(caja_panel, panel_name)
+    stack.set_visible_child_name(panel_name)
+
+def on_button_dolphin_clicked(button, stack, get_dolphin_panel):
+    dolphin_panel, panel_name = get_dolphin_panel()
+    stack.add_named(dolphin_panel, panel_name)
+    stack.set_visible_child_name(panel_name)
+
+def on_button_gnome_commander_clicked(button, stack, get_gnome_commander_panel):
+    gnome_commander_panel, panel_name = get_gnome_commander_panel()
+    stack.add_named(gnome_commander_panel, panel_name)
+    stack.set_visible_child_name(panel_name)
+
+def on_button_nautilus_clicked(button, stack, get_nautilus_panel):
+    nautilus_panel, panel_name = get_nautilus_panel()
+    stack.add_named(nautilus_panel, panel_name)
+    stack.set_visible_child_name(panel_name)
+
+def on_button_sunflower_clicked(button, stack, get_sunflower_panel):
+    sunflower_panel, panel_name = get_sunflower_panel()
+    stack.add_named(sunflower_panel, panel_name)
+    stack.set_visible_child_name(panel_name)
+
+def on_button_thunar_clicked(button, stack, get_thunar_panel):
+    thunar_panel, panel_name = get_thunar_panel()
+    stack.add_named(thunar_panel, panel_name)
+    stack.set_visible_child_name(panel_name)
+
 
 
 def on_button3_clicked(button, stack):

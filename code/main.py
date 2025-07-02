@@ -4,7 +4,7 @@ import os
 gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
 from gi.repository import Gtk, Adw
-from common import get_intro_panel,get_gnomehotk_panel,get_kdehotk_panel,get_terminalhotk_panel,get_intro_in_packages_panel,get_appimage_panel,get_deb_panel,get_rpm_panel,get_snap_panel,get_tar_panel,get_flatpack_panel,get_zst_panel, get_language_panel, get_auto_and_scripts_panel, get_files_and_directories_panel, get_intro_in_terminal_panel, get_lifehacks_panel, get_navigation_panel, get_network_panel, get_processes_panel, get_utils_panel
+from common import get_intro_panel,get_gnomehotk_panel,get_kdehotk_panel,get_terminalhotk_panel,get_intro_in_packages_panel,get_appimage_panel,get_deb_panel,get_rpm_panel,get_snap_panel,get_tar_panel,get_flatpack_panel,get_zst_panel, get_language_panel, get_auto_and_scripts_panel, get_files_and_directories_panel, get_intro_in_terminal_panel, get_lifehacks_panel, get_navigation_panel, get_network_panel, get_processes_panel, get_utils_panel, get_intro_in_files_panel, get_bouble_commander_panel, get_caja_panel, get_dolphin_panel, get_gnome_commander_panel, get_nautilus_panel, get_sunflower_panel, get_thunar_panel
 from translations import translations
 
 # Создаём Stack для переключения панелей
@@ -232,6 +232,86 @@ def _on_button_utils_clicked(button):
         stack.set_visible_child_name(panel_name)
         return
     panel, _, back_button = get_utils_panel()
+    back_button.connect("clicked", on_back_clicked)
+    stack.add_named(panel, panel_name)
+    stack.set_visible_child_name(panel_name)
+
+def _on_button_intro_in_files_clicked(button):
+    panel_name = "hotkeys_intro_panel"
+    if stack.get_child_by_name(panel_name):
+        stack.set_visible_child_name(panel_name)
+        return
+    panel, _, back_button = get_intro_in_files_panel()
+    back_button.connect("clicked", on_back_clicked)
+    stack.add_named(panel, panel_name)
+    stack.set_visible_child_name(panel_name)
+
+def _on_button_bouble_commander_clicked(button):
+    panel_name = "hotkeys_intro_panel"
+    if stack.get_child_by_name(panel_name):
+        stack.set_visible_child_name(panel_name)
+        return
+    panel, _, back_button = get_bouble_commander_panel()
+    back_button.connect("clicked", on_back_clicked)
+    stack.add_named(panel, panel_name)
+    stack.set_visible_child_name(panel_name)
+
+def _on_button_caja_clicked(button):
+    panel_name = "hotkeys_intro_panel"
+    if stack.get_child_by_name(panel_name):
+        stack.set_visible_child_name(panel_name)
+        return
+    panel, _, back_button = get_caja_panel()
+    back_button.connect("clicked", on_back_clicked)
+    stack.add_named(panel, panel_name)
+    stack.set_visible_child_name(panel_name)
+
+def _on_button_dolphin_clicked(button):
+    panel_name = "hotkeys_intro_panel"
+    if stack.get_child_by_name(panel_name):
+        stack.set_visible_child_name(panel_name)
+        return
+    panel, _, back_button = get_dolphin_panel()
+    back_button.connect("clicked", on_back_clicked)
+    stack.add_named(panel, panel_name)
+    stack.set_visible_child_name(panel_name)
+
+def _on_button_gnome_commander_clicked(button):
+    panel_name = "hotkeys_intro_panel"
+    if stack.get_child_by_name(panel_name):
+        stack.set_visible_child_name(panel_name)
+        return
+    panel, _, back_button = get_gnome_commander_panel()
+    back_button.connect("clicked", on_back_clicked)
+    stack.add_named(panel, panel_name)
+    stack.set_visible_child_name(panel_name)
+
+def _on_button_nautilus_clicked(button):
+    panel_name = "hotkeys_intro_panel"
+    if stack.get_child_by_name(panel_name):
+        stack.set_visible_child_name(panel_name)
+        return
+    panel, _, back_button = get_nautilus_panel()
+    back_button.connect("clicked", on_back_clicked)
+    stack.add_named(panel, panel_name)
+    stack.set_visible_child_name(panel_name)
+
+def _on_button_sunflower_clicked(button):
+    panel_name = "hotkeys_intro_panel"
+    if stack.get_child_by_name(panel_name):
+        stack.set_visible_child_name(panel_name)
+        return
+    panel, _, back_button = get_sunflower_panel()
+    back_button.connect("clicked", on_back_clicked)
+    stack.add_named(panel, panel_name)
+    stack.set_visible_child_name(panel_name)
+
+def _on_button_thunar_clicked(button):
+    panel_name = "hotkeys_intro_panel"
+    if stack.get_child_by_name(panel_name):
+        stack.set_visible_child_name(panel_name)
+        return
+    panel, _, back_button = get_thunar_panel()
     back_button.connect("clicked", on_back_clicked)
     stack.add_named(panel, panel_name)
     stack.set_visible_child_name(panel_name)
@@ -505,7 +585,50 @@ def on_activate(app):
     back_button = Gtk.Button(label="‹")
     back_button.connect("clicked", on_back_clicked)
     back_button.add_css_class("back-button1")
+    back_button.set_size_request(50, 50)
+    back_button.set_halign(Gtk.Align.START)
+    back_button.set_hexpand(False)
     main_box_panel4.append(back_button)
+
+    button_intro_in_files_topic = Gtk.Button(label="Introduction")
+    button_intro_in_files_topic.connect("clicked", _on_button_intro_in_files_clicked)
+    button_intro_in_files_topic.add_css_class("button-intro-topic")
+    main_box_panel4.append(button_intro_in_files_topic)
+
+    button_bouble_commander_topic = Gtk.Button(label="Bouble Commander")
+    button_bouble_commander_topic.connect("clicked", _on_button_bouble_commander_clicked)
+    button_bouble_commander_topic.add_css_class("button-intro-topic")
+    main_box_panel4.append(button_bouble_commander_topic)
+
+    button_caja_topic = Gtk.Button(label="Caja")
+    button_caja_topic.connect("clicked", _on_button_caja_clicked)
+    button_caja_topic.add_css_class("button-intro-topic")
+    main_box_panel4.append(button_caja_topic)
+
+    button_dolphin_topic = Gtk.Button(label="Dolphin")
+    button_dolphin_topic.connect("clicked", _on_button_dolphin_clicked)
+    button_dolphin_topic.add_css_class("button-intro-topic")
+    main_box_panel4.append(button_dolphin_topic)
+
+    button_gnome_commander_topic = Gtk.Button(label="Gnome Commander")
+    button_gnome_commander_topic.connect("clicked", _on_button_gnome_commander_clicked)
+    button_gnome_commander_topic.add_css_class("button-intro-topic")
+    main_box_panel4.append(button_gnome_commander_topic)
+
+    button_nautilus_topic = Gtk.Button(label="Nautilus")
+    button_nautilus_topic.connect("clicked", _on_button_nautilus_clicked)
+    button_nautilus_topic.add_css_class("button-intro-topic")
+    main_box_panel4.append(button_nautilus_topic)
+
+    button_sunflower_topic = Gtk.Button(label="Sunflower")
+    button_sunflower_topic.connect("clicked", _on_button_sunflower_clicked)
+    button_sunflower_topic.add_css_class("button-intro-topic")
+    main_box_panel4.append(button_sunflower_topic)
+
+    button_thunar_topic = Gtk.Button(label="Thunar")
+    button_thunar_topic.connect("clicked", _on_button_thunar_clicked)
+    button_thunar_topic.add_css_class("button-intro-topic")
+    main_box_panel4.append(button_thunar_topic)
 
     stack.add_named(main_box_panel4, "file_manager_panel")
 
