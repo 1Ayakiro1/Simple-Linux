@@ -2,7 +2,9 @@ import gi
 gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
 from gi.repository import Gtk, Adw
-from code.text import hotkeys_text
+from code.text import chapter_texts
+from translations import current_language
+from code.dynamic_refs import dynamic_labels
 
 scrolled_window_kdehotk_topic = Gtk.ScrolledWindow()
 scrolled_window_kdehotk_topic.set_policy(Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
@@ -21,7 +23,8 @@ back_button.set_hexpand(False)
 main_box_panel_kdehotk_topic.append(back_button)
 
 # Label
-label = Gtk.Label(label=hotkeys_text)
+label = Gtk.Label(label=chapter_texts["hotkeys"][current_language])
+dynamic_labels.append((label, "hotkeys"))
 label.add_css_class("intro-label")
 main_box_panel_kdehotk_topic.append(label)
 

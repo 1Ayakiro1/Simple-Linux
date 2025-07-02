@@ -5,7 +5,9 @@ gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
 from gi.repository import Gtk, Adw
 from common import get_intro_panel,get_gnomehotk_panel,get_kdehotk_panel,get_terminalhotk_panel,get_intro_in_packages_panel,get_appimage_panel,get_deb_panel,get_rpm_panel,get_snap_panel,get_tar_panel,get_flatpack_panel,get_zst_panel, get_language_panel, get_auto_and_scripts_panel, get_files_and_directories_panel, get_intro_in_terminal_panel, get_lifehacks_panel, get_navigation_panel, get_network_panel, get_processes_panel, get_utils_panel, get_intro_in_files_panel, get_bouble_commander_panel, get_caja_panel, get_dolphin_panel, get_gnome_commander_panel, get_nautilus_panel, get_sunflower_panel, get_thunar_panel
-from translations import translations
+from translations import translations, current_language
+from code.text import chapter_texts
+from code.dynamic_refs import dynamic_labels, dynamic_main_labels, dynamic_main_buttons
 
 # Создаём Stack для переключения панелей
 stack = Gtk.Stack()
@@ -14,8 +16,6 @@ stack.set_transition_type(Gtk.StackTransitionType.SLIDE_LEFT_RIGHT)  # Set anima
 #Back_button_func
 def on_back_clicked(button):
     stack.set_visible_child_name("main_panel")
-
-current_language = "en"
 
 def on_language_clicked(button):
     print("Language button clicked")
@@ -359,6 +359,7 @@ def on_activate(app):
     label.set_halign(Gtk.Align.CENTER)
     label.set_hexpand(True)
     center_box.set_center_widget(label)
+    dynamic_main_labels.append((label, "main_title"))
 
     # Switch lang button
     lang_button = Gtk.MenuButton(label="En")
@@ -384,6 +385,7 @@ def on_activate(app):
         global current_language
         current_language = lang_code
         lang_button.set_label(lang_code.upper())
+        update_all_texts()
         print(f"Language changed to: {lang_code}")
         popover.popdown()
 
@@ -424,22 +426,25 @@ def on_activate(app):
     box_horiz2.set_valign(Gtk.Align.CENTER)
 
     # Terminal button
-    button1 = Gtk.Button(label="Linux Terminal")
+    button1 = Gtk.Button(label=translations[current_language]["hotkeys"])
     button1.connect("clicked", on_button1_clicked)
     button1.add_css_class("custom-button1")
     box_horiz1.append(button1)
+    dynamic_main_buttons.append((button1, "hotkeys"))
 
     # Hotkeys button
-    button2 = Gtk.Button(label="Hotkeys")
+    button2 = Gtk.Button(label=translations[current_language]["file_manager"])
     button2.connect("clicked", on_button2_clicked)
     button2.add_css_class("custom-button2")
     box_horiz1.append(button2)
+    dynamic_main_buttons.append((button2, "file_manager"))
 
     # File manager button
-    button3 = Gtk.Button(label="File manager")
+    button3 = Gtk.Button(label=translations[current_language]["packages"])
     button3.connect("clicked", on_button3_clicked)
     button3.add_css_class("custom-button3")
     box_horiz2.append(button3)
+    dynamic_main_buttons.append((button3, "packages"))
 
     # Packages & installing button
     button4 = Gtk.Button(label="Packages & installing")
@@ -722,6 +727,17 @@ def on_activate(app):
 
     # Показываем окно
     window.present()
+
+def update_all_texts():
+    # Обновить все лейблы подглав
+    for label, chapter in dynamic_labels:
+        label.set_label(chapter_texts[chapter][current_language])
+    # Обновить заголовки
+    for label, key in dynamic_main_labels:
+        label.set_label(translations[current_language][key])
+    # Обновить главные кнопки
+    for button, key in dynamic_main_buttons:
+        button.set_label(translations[current_language][key])
 
 def main():
     # Создаём приложение с валидным application_id

@@ -48,4 +48,11 @@ translations = {
         "file_manager": "Administrador de archivos",
         "packages": "Paquetes e instalación",
     },
-} 
+}
+
+current_language = "en"
+
+def get_translation(key, lang=None):
+    if lang is None:
+        lang = current_language
+    return translations.get(lang, {}).get(key, key) 
