@@ -5,8 +5,9 @@ gi.require_version("Adw", "1")
 from gi.repository import Gtk, Adw
 from handlers import on_back_clicked, on_back_clicked_intro1
 from code.text import chapter_texts
-from translations import current_language
+from translations.main_titles import current_language
 from code.dynamic_refs import dynamic_labels
+from translations.hotkeys_chapters import hotkeys_translations
 
 # --- Создаём скроллируемую панель для темы "Hotkeys" ---
 scrolled_window_intro_topic = Gtk.ScrolledWindow()
@@ -28,7 +29,7 @@ back_button.set_hexpand(False)
 main_box_panel_intro_topic.append(back_button)
 
 # --- Текстовая метка с хоткеями ---
-label = Gtk.Label(label=chapter_texts["hotkeys"][current_language])
+label = Gtk.Label(label=hotkeys_translations[current_language]["introduction_topic"])
 dynamic_labels.append((label, "hotkeys"))
 label.add_css_class("intro-label")
 main_box_panel_intro_topic.append(label)
@@ -47,3 +48,6 @@ def get_intro_panel():
     чтобы можно было передать нужный stack и избежать циклических импортов.
     """
     return scrolled_window_intro_topic, "hotkeys_intro_panel", back_button
+
+def get_introduction_topic_text():
+    return hotkeys_translations[current_language]["introduction_topic"]

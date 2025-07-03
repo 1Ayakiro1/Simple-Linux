@@ -1,0 +1,23 @@
+packages_translations = {
+    "en": {
+        "appimage": "AppImage is a universal software package format for Linux...",
+        "deb": "DEB is the package format used by Debian and Ubuntu...",
+        "flatpack": "Flatpak is a system for building, distributing, and running sandboxed desktop applications on Linux...",
+        "intro_in_packages": "This section introduces you to package management in Linux...",
+        "rpm": "RPM is the package format used by Red Hat, Fedora, and others...",
+        "snap": "Snap is a universal Linux package format developed by Canonical...",
+        "tar": "TAR archives are used for software distribution in source or binary form...",
+        "zst": "ZST (Zstandard) is a fast compression algorithm used in some Linux distributions...",
+    },
+    "ru": {
+        "appimage": "AppImage — универсальный формат пакетов для Linux...",
+        "deb": "DEB — формат пакетов, используемый в Debian и Ubuntu...",
+        "flatpack": "Flatpak — система для создания, распространения и запуска изолированных приложений на Linux...",
+        "intro_in_packages": "В этом разделе вы познакомитесь с управлением пакетами в Linux...",
+        "rpm": "RPM — формат пакетов, используемый в Red Hat, Fedora и других...",
+        "snap": "Snap — универсальный формат пакетов для Linux, разработанный Canonical...",
+        "tar": "TAR-архивы используются для распространения программ в исходном или бинарном виде...",
+        "zst": "ZST (Zstandard) — быстрый алгоритм сжатия, используемый в некоторых дистрибутивах Linux...",
+    },
+    # Добавь другие языки по аналогии
+} 

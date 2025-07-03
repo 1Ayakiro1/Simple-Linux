@@ -2,9 +2,9 @@ import gi
 gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
 from gi.repository import Gtk, Adw
-from code.text import chapter_texts
-from translations import current_language
+from translations.main_titles import current_language
 from code.dynamic_refs import dynamic_labels
+from translations.hotkeys_chapters import hotkeys_translations
 
 scrolled_window_gnomehotk_topic = Gtk.ScrolledWindow()
 scrolled_window_gnomehotk_topic.set_policy(Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
@@ -23,7 +23,7 @@ back_button.set_hexpand(False)
 main_box_panel_gnomehotk_topic.append(back_button)
 
 # Label
-label = Gtk.Label(label=chapter_texts["hotkeys"][current_language])
+label = Gtk.Label(label=hotkeys_translations[current_language]["gnomehotk"])
 dynamic_labels.append((label, "hotkeys"))
 label.add_css_class("intro-label")
 main_box_panel_gnomehotk_topic.append(label)
@@ -32,3 +32,6 @@ scrolled_window_gnomehotk_topic.set_child(main_box_panel_gnomehotk_topic)
 
 def get_gnomehotk_panel():
     return scrolled_window_gnomehotk_topic, "hotkeys_intro_panel", back_button
+
+def get_gnomehotk_text():
+    return hotkeys_translations[current_language]["gnomehotk"]

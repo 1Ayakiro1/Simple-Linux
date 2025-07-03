@@ -3,7 +3,9 @@ gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
 from gi.repository import Gtk, Adw
 from code.text import chapter_texts
-from translations import current_language
+from translations.main_titles import current_language
+from translations.fileman_chapters import fileman_translations
+from code.dynamic_refs import dynamic_labels
 
 
 
@@ -24,7 +26,8 @@ back_button.set_hexpand(False)
 main_box_panel_sunflower.append(back_button)
 
 # Label
-label = Gtk.Label(label=chapter_texts["hotkeys"][current_language])
+label = Gtk.Label(label=fileman_translations[current_language]["sunflower"])
+dynamic_labels.append((label, "hotkeys"))
 label.add_css_class("intro-label")
 main_box_panel_sunflower.append(label)
 
@@ -32,3 +35,6 @@ scrolled_window_sunflower.set_child(main_box_panel_sunflower)
 
 def get_sunflower_panel():
     return scrolled_window_sunflower, "sunflower_panel", back_button
+
+def get_sunflower_text():
+    return fileman_translations[current_language]["sunflower"]

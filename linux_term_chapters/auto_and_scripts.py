@@ -3,7 +3,9 @@ gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
 from gi.repository import Gtk, Adw
 from code.text import chapter_texts
-from translations import current_language
+from translations.main_titles import current_language
+from translations.linux_term_chapters import linux_term_translations
+from code.dynamic_refs import dynamic_labels
 
 
 
@@ -24,7 +26,8 @@ back_button.set_hexpand(False)
 main_box_panel_auto_and_scripts_topic.append(back_button)
 
 # Label
-label = Gtk.Label(label=chapter_texts["hotkeys"][current_language])
+label = Gtk.Label(label=linux_term_translations[current_language]["auto_and_scripts"])
+dynamic_labels.append((label, "hotkeys"))
 label.add_css_class("intro-label")
 main_box_panel_auto_and_scripts_topic.append(label)
 
@@ -32,3 +35,6 @@ scrolled_window_auto_and_scripts_topic.set_child(main_box_panel_auto_and_scripts
 
 def get_auto_and_scripts_panel():
     return scrolled_window_auto_and_scripts_topic, "auto_and_scripts_panel", back_button
+
+def get_auto_and_scripts_text():
+    return linux_term_translations[current_language]["auto_and_scripts"]

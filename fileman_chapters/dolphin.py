@@ -3,8 +3,9 @@ gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
 from gi.repository import Gtk, Adw
 from code.text import chapter_texts
-from translations import current_language
+from translations.main_titles import current_language
 from code.dynamic_refs import dynamic_labels
+from translations.fileman_chapters import fileman_translations
 
 
 
@@ -25,7 +26,7 @@ back_button.set_hexpand(False)
 main_box_panel_dolphin.append(back_button)
 
 # Label
-label = Gtk.Label(label=chapter_texts["hotkeys"][current_language])
+label = Gtk.Label(label=fileman_translations[current_language]["dolphin"])
 dynamic_labels.append((label, "hotkeys"))
 label.add_css_class("intro-label")
 main_box_panel_dolphin.append(label)
@@ -34,3 +35,6 @@ scrolled_window_dolphin.set_child(main_box_panel_dolphin)
 
 def get_dolphin_panel():
     return scrolled_window_dolphin, "dolphin_panel", back_button
+
+def get_dolphin_text():
+    return fileman_translations[current_language]["dolphin"]

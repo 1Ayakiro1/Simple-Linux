@@ -3,8 +3,9 @@ gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
 from gi.repository import Gtk, Adw
 from code.text import chapter_texts
-from translations import current_language
+from translations.main_titles import current_language
 from code.dynamic_refs import dynamic_labels
+from translations.fileman_chapters import fileman_translations
 
 
 
@@ -25,7 +26,7 @@ back_button.set_hexpand(False)
 main_box_panel_intro_in_files.append(back_button)
 
 # Label
-label = Gtk.Label(label=chapter_texts["hotkeys"][current_language])
+label = Gtk.Label(label=fileman_translations[current_language]["intro_in_files"])
 dynamic_labels.append((label, "hotkeys"))
 label.add_css_class("intro-label")
 main_box_panel_intro_in_files.append(label)
@@ -34,3 +35,6 @@ scrolled_window_intro_in_files.set_child(main_box_panel_intro_in_files)
 
 def get_intro_in_files_panel():
     return scrolled_window_intro_in_files, "intro_in_files_panel", back_button
+
+def get_intro_in_files_text():
+    return fileman_translations[current_language]["intro_in_files"]
