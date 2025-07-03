@@ -2,7 +2,7 @@
 
 from hotkeys_chapters.introduction_topic import get_intro_panel as _get_intro_panel
 from hotkeys_chapters.gnomehotk import get_gnomehotk_panel as _get_gnomehotk_panel
-from hotkeys_chapters.kdehotk import get_kdehotk_panel as _get_gnomehotk_panel
+from hotkeys_chapters.kdehotk import get_kdehotk_panel as _get_kdehotk_panel
 from hotkeys_chapters.terminalhotk import get_terminalhotk_panel as _get_terminalhotk_panel
 from packages_chapters.intro_in_packages import get_intro_in_packages_panel as _get_intro_in_packages_panel
 from packages_chapters.appimage import get_appimage_panel as _get_appimage_panel
@@ -38,7 +38,7 @@ def get_gnomehotk_panel():
     return _get_gnomehotk_panel()
 
 def get_kdehotk_panel():
-    return _get_gnomehotk_panel()
+    return _get_kdehotk_panel()
 
 def get_terminalhotk_panel():
     return _get_terminalhotk_panel()
