@@ -1,7 +1,7 @@
 hotkeys_translations = {
     "en": {
         "introduction_topic": "This section introduces you to hotkeys in Linux environments...",
-        "gnomehotk": """hi test 2""",
+        "gnomehotk": "hi test 2",
         "kdehotk": "KDE hotkeys are highly customizable. For example: Meta+Space opens KRunner...",
         "terminalhotk": "Terminal hotkeys speed up your workflow. For example: Ctrl+Shift+T opens a new tab...",
     },
@@ -87,6 +87,30 @@ hotkeys_translations = {
 
 
         "terminalhotk": "Горячие клавиши терминала ускоряют работу. Например: Ctrl+Shift+T открывает новую вкладку...",
+        "bouble_commander": "Double Commander — мощный файловый менеджер...",
+        "caja": "Caja — файловый менеджер по умолчанию для MATE...",
+        "dolphin": "Dolphin — файловый менеджер по умолчанию для KDE...",
+        "gnome_commander": "GNOME Commander — двухпанельный файловый менеджер для GNOME...",
+        "intro_in_files": "Введение в файловые менеджеры в Linux...",
+        "nautilus": "Nautilus (Files) — файловый менеджер по умолчанию для GNOME...",
+        "sunflower": "Sunflower — двухпанельный файловый менеджер для Linux...",
+        "thunar": "Thunar — быстрый и удобный файловый менеджер для Xfce...",
+        "auto_and_scripts": "В этом разделе рассматривается автоматизация и скрипты в Linux...",
+        "files_and_directories": "Узнайте, как работать с файлами и каталогами в Linux...",
+        "intro_in_terminal": "Введение в терминал Linux...",
+        "lifehacks": "Полезные лайфхаки для терминала...",
+        "navigation": "Команды и советы по навигации в терминале...",
+        "network": "Управление сетью и сетевые команды в Linux...",
+        "processes": "Управление процессами в терминале Linux...",
+        "utils": "Полезные утилиты и инструменты в терминале...",
+        "appimage": "AppImage — универсальный формат пакетов для Linux...",
+        "deb": "DEB — формат пакетов, используемый в Debian и Ubuntu...",
+        "flatpack": "Flatpak — система для создания, распространения и запуска изолированных приложений на Linux...",
+        "intro_in_packages": "В этом разделе вы познакомитесь с управлением пакетами в Linux...",
+        "rpm": "RPM — формат пакетов, используемый в Red Hat, Fedora и других...",
+        "snap": "Snap — универсальный формат пакетов для Linux, разработанный Canonical...",
+        "tar": "TAR-архивы используются для распространения программ в исходном или бинарном виде...",
+        "zst": "ZST (Zstandard) — быстрый алгоритм сжатия, используемый в некоторых дистрибутивах Linux...",
     },
     # Добавь другие языки по аналогии
 } 

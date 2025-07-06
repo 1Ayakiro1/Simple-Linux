@@ -27,7 +27,8 @@ main_box_panel_utils_topic.append(back_button)
 
 # Label
 label = Gtk.Label(label=linux_term_translations[current_language]["utils"])
-dynamic_labels.append((label, "hotkeys"))
+label.set_use_markup(True)
+dynamic_labels.append((label, "utils"))
 label.add_css_class("intro-label")
 main_box_panel_utils_topic.append(label)
 

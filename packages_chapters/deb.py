@@ -27,7 +27,8 @@ main_box_panel_deb_topic.append(back_button)
 
 # Label
 label = Gtk.Label(label=packages_translations[current_language]["deb"])
-dynamic_labels.append((label, "hotkeys"))
+label.set_use_markup(True)
+dynamic_labels.append((label, "deb"))
 label.add_css_class("intro-label")
 main_box_panel_deb_topic.append(label)
 

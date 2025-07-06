@@ -27,7 +27,8 @@ main_box_panel_files_and_directories_topic.append(back_button)
 
 # Label
 label = Gtk.Label(label=linux_term_translations[current_language]["files_and_directories"])
-dynamic_labels.append((label, "hotkeys"))
+label.set_use_markup(True)
+dynamic_labels.append((label, "files_and_directories"))
 label.add_css_class("intro-label")
 main_box_panel_files_and_directories_topic.append(label)
 

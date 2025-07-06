@@ -27,7 +27,8 @@ main_box_panel_zst_topic.append(back_button)
 
 # Label
 label = Gtk.Label(label=packages_translations[current_language]["zst"])
-dynamic_labels.append((label, "hotkeys"))
+label.set_use_markup(True)
+dynamic_labels.append((label, "zst"))
 label.add_css_class("intro-label")
 main_box_panel_zst_topic.append(label)
 

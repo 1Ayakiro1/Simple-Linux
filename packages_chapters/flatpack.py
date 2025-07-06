@@ -27,7 +27,8 @@ main_box_panel_flatpack_topic.append(back_button)
 
 # Label
 label = Gtk.Label(label=packages_translations[current_language]["flatpack"])
-dynamic_labels.append((label, "hotkeys"))
+label.set_use_markup(True)
+dynamic_labels.append((label, "flatpack"))
 label.add_css_class("intro-label")
 main_box_panel_flatpack_topic.append(label)
 

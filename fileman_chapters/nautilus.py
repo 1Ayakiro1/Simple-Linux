@@ -27,7 +27,8 @@ main_box_panel_nautilus.append(back_button)
 
 # Label
 label = Gtk.Label(label=fileman_translations[current_language]["nautilus"])
-dynamic_labels.append((label, "hotkeys"))
+label.set_use_markup(True)
+dynamic_labels.append((label, "nautilus"))
 label.add_css_class("intro-label")
 main_box_panel_nautilus.append(label)
 

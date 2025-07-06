@@ -27,7 +27,8 @@ main_box_panel_bouble_commander.append(back_button)
 
 # Label
 label = Gtk.Label(label=fileman_translations[current_language]["bouble_commander"])
-dynamic_labels.append((label, "hotkeys"))
+label.set_use_markup(True)
+dynamic_labels.append((label, "bouble_commander"))
 label.add_css_class("intro-label")
 main_box_panel_bouble_commander.append(label)
 

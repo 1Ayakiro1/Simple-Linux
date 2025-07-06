@@ -28,7 +28,7 @@ def on_button2_clicked(button):
     stack.set_visible_child_name("hotkeys_panel")
 
 def _on_button_intro_topic_clicked(button):
-    panel_name = "hotkeys_intro_panel"
+    panel_name = "introduction_topic_panel"
     if stack.get_child_by_name(panel_name):
         stack.set_visible_child_name(panel_name)
         return
@@ -38,7 +38,7 @@ def _on_button_intro_topic_clicked(button):
     stack.set_visible_child_name(panel_name)
 
 def _on_button_gnomehotk_topic_clicked(button):
-    panel_name = "hotkeys_intro_panel"
+    panel_name = "gnomehotk_panel"
     if stack.get_child_by_name(panel_name):
         stack.set_visible_child_name(panel_name)
         return
@@ -48,7 +48,7 @@ def _on_button_gnomehotk_topic_clicked(button):
     stack.set_visible_child_name(panel_name)
 
 def _on_button_kdehotk_topic_clicked(button):
-    panel_name = "hotkeys_intro_panel"
+    panel_name = "kdehotk_panel"
     if stack.get_child_by_name(panel_name):
         stack.set_visible_child_name(panel_name)
         return
@@ -57,8 +57,18 @@ def _on_button_kdehotk_topic_clicked(button):
     stack.add_named(panel, panel_name)
     stack.set_visible_child_name(panel_name)
 
+def _on_button_terminalhotk_topic_clicked(button):
+    panel_name = "terminalhotk_panel"
+    if stack.get_child_by_name(panel_name):
+        stack.set_visible_child_name(panel_name)
+        return
+    panel, _, back_button = get_terminalhotk_panel()
+    back_button.connect("clicked", on_back_clicked)
+    stack.add_named(panel, panel_name)
+    stack.set_visible_child_name(panel_name)
+
 def _on_button_intro_in_packages_clicked(button):
-    panel_name = "hotkeys_intro_panel"
+    panel_name = "intro_in_packages_panel"
     if stack.get_child_by_name(panel_name):
         stack.set_visible_child_name(panel_name)
         return
@@ -68,7 +78,7 @@ def _on_button_intro_in_packages_clicked(button):
     stack.set_visible_child_name(panel_name)
 
 def _on_button_appimage_clicked(button):
-    panel_name = "hotkeys_intro_panel"
+    panel_name = "appimage_panel"
     if stack.get_child_by_name(panel_name):
         stack.set_visible_child_name(panel_name)
         return
@@ -77,18 +87,8 @@ def _on_button_appimage_clicked(button):
     stack.add_named(panel, panel_name)
     stack.set_visible_child_name(panel_name)
 
-def _on_button_terminalhotk_topic_clicked(button):
-    panel_name = "hotkeys_intro_panel"
-    if stack.get_child_by_name(panel_name):
-        stack.set_visible_child_name(panel_name)
-        return
-    panel, _, back_button = get_terminalhotk_panel()
-    back_button.connect("clicked", on_back_clicked)
-    stack.add_named(panel, panel_name)
-    stack.set_visible_child_name(panel_name)
-
 def _on_button_deb_clicked(button):
-    panel_name = "hotkeys_intro_panel"
+    panel_name = "deb_panel"
     if stack.get_child_by_name(panel_name):
         stack.set_visible_child_name(panel_name)
         return
@@ -98,7 +98,7 @@ def _on_button_deb_clicked(button):
     stack.set_visible_child_name(panel_name)
 
 def _on_button_rpm_clicked(button):
-    panel_name = "hotkeys_intro_panel"
+    panel_name = "rpm_panel"
     if stack.get_child_by_name(panel_name):
         stack.set_visible_child_name(panel_name)
         return
@@ -108,7 +108,7 @@ def _on_button_rpm_clicked(button):
     stack.set_visible_child_name(panel_name)
 
 def _on_button_snap_clicked(button):
-    panel_name = "hotkeys_intro_panel"
+    panel_name = "snap_panel"
     if stack.get_child_by_name(panel_name):
         stack.set_visible_child_name(panel_name)
         return
@@ -118,7 +118,7 @@ def _on_button_snap_clicked(button):
     stack.set_visible_child_name(panel_name)
 
 def _on_button_tar_clicked(button):
-    panel_name = "hotkeys_intro_panel"
+    panel_name = "tar_panel"
     if stack.get_child_by_name(panel_name):
         stack.set_visible_child_name(panel_name)
         return
@@ -128,7 +128,7 @@ def _on_button_tar_clicked(button):
     stack.set_visible_child_name(panel_name)
 
 def _on_button_flatpack_clicked(button):
-    panel_name = "hotkeys_intro_panel"
+    panel_name = "flatpack_panel"
     if stack.get_child_by_name(panel_name):
         stack.set_visible_child_name(panel_name)
         return
@@ -138,7 +138,7 @@ def _on_button_flatpack_clicked(button):
     stack.set_visible_child_name(panel_name)
 
 def _on_button_zst_clicked(button):
-    panel_name = "hotkeys_intro_panel"
+    panel_name = "zst_panel"
     if stack.get_child_by_name(panel_name):
         stack.set_visible_child_name(panel_name)
         return
@@ -147,18 +147,8 @@ def _on_button_zst_clicked(button):
     stack.add_named(panel, panel_name)
     stack.set_visible_child_name(panel_name)
 
-def _on_language_clicked(button):
-    panel_name = "language_panel"
-    if stack.get_child_by_name(panel_name):
-        stack.set_visible_child_name(panel_name)
-        return
-    panel, _, back_button = get_language_panel()
-    back_button.connect("clicked", on_back_clicked)
-    stack.add_named(panel, panel_name)
-    stack.set_visible_child_name(panel_name)
-
 def _on_button_auto_and_scripts_clicked(button):
-    panel_name = "hotkeys_intro_panel"
+    panel_name = "auto_and_scripts_panel"
     if stack.get_child_by_name(panel_name):
         stack.set_visible_child_name(panel_name)
         return
@@ -168,7 +158,7 @@ def _on_button_auto_and_scripts_clicked(button):
     stack.set_visible_child_name(panel_name)
 
 def _on_button_files_and_directories_clicked(button):
-    panel_name = "hotkeys_intro_panel"
+    panel_name = "files_and_directories_panel"
     if stack.get_child_by_name(panel_name):
         stack.set_visible_child_name(panel_name)
         return
@@ -178,7 +168,7 @@ def _on_button_files_and_directories_clicked(button):
     stack.set_visible_child_name(panel_name)
 
 def _on_button_intro_in_terminal_clicked(button):
-    panel_name = "hotkeys_intro_panel"
+    panel_name = "intro_in_terminal_panel"
     if stack.get_child_by_name(panel_name):
         stack.set_visible_child_name(panel_name)
         return
@@ -188,7 +178,7 @@ def _on_button_intro_in_terminal_clicked(button):
     stack.set_visible_child_name(panel_name)
 
 def _on_button_lifehacks_clicked(button):
-    panel_name = "hotkeys_intro_panel"
+    panel_name = "lifehacks_panel"
     if stack.get_child_by_name(panel_name):
         stack.set_visible_child_name(panel_name)
         return
@@ -198,7 +188,7 @@ def _on_button_lifehacks_clicked(button):
     stack.set_visible_child_name(panel_name)
 
 def _on_button_navigation_clicked(button):
-    panel_name = "hotkeys_intro_panel"
+    panel_name = "navigation_panel"
     if stack.get_child_by_name(panel_name):
         stack.set_visible_child_name(panel_name)
         return
@@ -208,7 +198,7 @@ def _on_button_navigation_clicked(button):
     stack.set_visible_child_name(panel_name)
 
 def _on_button_network_clicked(button):
-    panel_name = "hotkeys_intro_panel"
+    panel_name = "network_panel"
     if stack.get_child_by_name(panel_name):
         stack.set_visible_child_name(panel_name)
         return
@@ -218,7 +208,7 @@ def _on_button_network_clicked(button):
     stack.set_visible_child_name(panel_name)
 
 def _on_button_processes_clicked(button):
-    panel_name = "hotkeys_intro_panel"
+    panel_name = "processes_panel"
     if stack.get_child_by_name(panel_name):
         stack.set_visible_child_name(panel_name)
         return
@@ -228,7 +218,7 @@ def _on_button_processes_clicked(button):
     stack.set_visible_child_name(panel_name)
 
 def _on_button_utils_clicked(button):
-    panel_name = "hotkeys_intro_panel"
+    panel_name = "utils_panel"
     if stack.get_child_by_name(panel_name):
         stack.set_visible_child_name(panel_name)
         return
@@ -238,7 +228,7 @@ def _on_button_utils_clicked(button):
     stack.set_visible_child_name(panel_name)
 
 def _on_button_intro_in_files_clicked(button):
-    panel_name = "hotkeys_intro_panel"
+    panel_name = "intro_in_files_panel"
     if stack.get_child_by_name(panel_name):
         stack.set_visible_child_name(panel_name)
         return
@@ -248,7 +238,7 @@ def _on_button_intro_in_files_clicked(button):
     stack.set_visible_child_name(panel_name)
 
 def _on_button_bouble_commander_clicked(button):
-    panel_name = "hotkeys_intro_panel"
+    panel_name = "bouble_commander_panel"
     if stack.get_child_by_name(panel_name):
         stack.set_visible_child_name(panel_name)
         return
@@ -258,7 +248,7 @@ def _on_button_bouble_commander_clicked(button):
     stack.set_visible_child_name(panel_name)
 
 def _on_button_caja_clicked(button):
-    panel_name = "hotkeys_intro_panel"
+    panel_name = "caja_panel"
     if stack.get_child_by_name(panel_name):
         stack.set_visible_child_name(panel_name)
         return
@@ -268,7 +258,7 @@ def _on_button_caja_clicked(button):
     stack.set_visible_child_name(panel_name)
 
 def _on_button_dolphin_clicked(button):
-    panel_name = "hotkeys_intro_panel"
+    panel_name = "dolphin_panel"
     if stack.get_child_by_name(panel_name):
         stack.set_visible_child_name(panel_name)
         return
@@ -278,7 +268,7 @@ def _on_button_dolphin_clicked(button):
     stack.set_visible_child_name(panel_name)
 
 def _on_button_gnome_commander_clicked(button):
-    panel_name = "hotkeys_intro_panel"
+    panel_name = "gnome_commander_panel"
     if stack.get_child_by_name(panel_name):
         stack.set_visible_child_name(panel_name)
         return
@@ -288,7 +278,7 @@ def _on_button_gnome_commander_clicked(button):
     stack.set_visible_child_name(panel_name)
 
 def _on_button_nautilus_clicked(button):
-    panel_name = "hotkeys_intro_panel"
+    panel_name = "nautilus_panel"
     if stack.get_child_by_name(panel_name):
         stack.set_visible_child_name(panel_name)
         return
@@ -298,7 +288,7 @@ def _on_button_nautilus_clicked(button):
     stack.set_visible_child_name(panel_name)
 
 def _on_button_sunflower_clicked(button):
-    panel_name = "hotkeys_intro_panel"
+    panel_name = "sunflower_panel"
     if stack.get_child_by_name(panel_name):
         stack.set_visible_child_name(panel_name)
         return
@@ -308,7 +298,7 @@ def _on_button_sunflower_clicked(button):
     stack.set_visible_child_name(panel_name)
 
 def _on_button_thunar_clicked(button):
-    panel_name = "hotkeys_intro_panel"
+    panel_name = "thunar_panel"
     if stack.get_child_by_name(panel_name):
         stack.set_visible_child_name(panel_name)
         return
@@ -759,105 +749,137 @@ def on_activate(app):
     window.present()
 
 def update_all_texts():
+    from translations.main_titles import translations
     # Updating Labels
     for label, chapter in dynamic_labels:
+        print(f"[DEBUG] update label for chapter: {chapter}")
         # Hotkeys chapters
         if chapter == "gnomehotk":
             from translations.hotkeys_chapters import hotkeys_translations
+            print(f"[DEBUG] set_label: {hotkeys_translations[current_language]['gnomehotk']}")
             label.set_label(hotkeys_translations[current_language]["gnomehotk"])
         elif chapter == "kdehotk":
             from translations.hotkeys_chapters import hotkeys_translations
+            print(f"[DEBUG] set_label: {hotkeys_translations[current_language]['kdehotk']}")
             label.set_label(hotkeys_translations[current_language]["kdehotk"])
         elif chapter == "terminalhotk":
             from translations.hotkeys_chapters import hotkeys_translations
+            print(f"[DEBUG] set_label: {hotkeys_translations[current_language]['terminalhotk']}")
             label.set_label(hotkeys_translations[current_language]["terminalhotk"])
         elif chapter == "introduction_topic":
             from translations.hotkeys_chapters import hotkeys_translations
+            print(f"[DEBUG] set_label: {hotkeys_translations[current_language]['introduction_topic']}")
             label.set_label(hotkeys_translations[current_language]["introduction_topic"])
         # Fileman chapters
         elif chapter == "bouble_commander":
             from translations.fileman_chapters import fileman_translations
+            print(f"[DEBUG] set_label: {fileman_translations[current_language]['bouble_commander']}")
             label.set_label(fileman_translations[current_language]["bouble_commander"])
         elif chapter == "caja":
             from translations.fileman_chapters import fileman_translations
+            print(f"[DEBUG] set_label: {fileman_translations[current_language]['caja']}")
             label.set_label(fileman_translations[current_language]["caja"])
         elif chapter == "dolphin":
             from translations.fileman_chapters import fileman_translations
+            print(f"[DEBUG] set_label: {fileman_translations[current_language]['dolphin']}")
             label.set_label(fileman_translations[current_language]["dolphin"])
         elif chapter == "gnome_commander":
             from translations.fileman_chapters import fileman_translations
+            print(f"[DEBUG] set_label: {fileman_translations[current_language]['gnome_commander']}")
             label.set_label(fileman_translations[current_language]["gnome_commander"])
         elif chapter == "intro_in_files":
             from translations.fileman_chapters import fileman_translations
+            print(f"[DEBUG] set_label: {fileman_translations[current_language]['intro_in_files']}")
             label.set_label(fileman_translations[current_language]["intro_in_files"])
         elif chapter == "nautilus":
             from translations.fileman_chapters import fileman_translations
+            print(f"[DEBUG] set_label: {fileman_translations[current_language]['nautilus']}")
             label.set_label(fileman_translations[current_language]["nautilus"])
         elif chapter == "sunflower":
             from translations.fileman_chapters import fileman_translations
+            print(f"[DEBUG] set_label: {fileman_translations[current_language]['sunflower']}")
             label.set_label(fileman_translations[current_language]["sunflower"])
         elif chapter == "thunar":
             from translations.fileman_chapters import fileman_translations
+            print(f"[DEBUG] set_label: {fileman_translations[current_language]['thunar']}")
             label.set_label(fileman_translations[current_language]["thunar"])
         # Linux term chapters
         elif chapter == "auto_and_scripts":
             from translations.linux_term_chapters import linux_term_translations
+            print(f"[DEBUG] set_label: {linux_term_translations[current_language]['auto_and_scripts']}")
             label.set_label(linux_term_translations[current_language]["auto_and_scripts"])
         elif chapter == "files_and_directories":
             from translations.linux_term_chapters import linux_term_translations
+            print(f"[DEBUG] set_label: {linux_term_translations[current_language]['files_and_directories']}")
             label.set_label(linux_term_translations[current_language]["files_and_directories"])
         elif chapter == "intro_in_terminal":
             from translations.linux_term_chapters import linux_term_translations
+            print(f"[DEBUG] set_label: {linux_term_translations[current_language]['intro_in_terminal']}")
             label.set_label(linux_term_translations[current_language]["intro_in_terminal"])
         elif chapter == "lifehacks":
             from translations.linux_term_chapters import linux_term_translations
+            print(f"[DEBUG] set_label: {linux_term_translations[current_language]['lifehacks']}")
             label.set_label(linux_term_translations[current_language]["lifehacks"])
         elif chapter == "navigation":
             from translations.linux_term_chapters import linux_term_translations
+            print(f"[DEBUG] set_label: {linux_term_translations[current_language]['navigation']}")
             label.set_label(linux_term_translations[current_language]["navigation"])
         elif chapter == "network":
             from translations.linux_term_chapters import linux_term_translations
+            print(f"[DEBUG] set_label: {linux_term_translations[current_language]['network']}")
             label.set_label(linux_term_translations[current_language]["network"])
         elif chapter == "processes":
             from translations.linux_term_chapters import linux_term_translations
+            print(f"[DEBUG] set_label: {linux_term_translations[current_language]['processes']}")
             label.set_label(linux_term_translations[current_language]["processes"])
         elif chapter == "utils":
             from translations.linux_term_chapters import linux_term_translations
+            print(f"[DEBUG] set_label: {linux_term_translations[current_language]['utils']}")
             label.set_label(linux_term_translations[current_language]["utils"])
         # Packages chapters
         elif chapter == "appimage":
             from translations.packages_chapters import packages_translations
+            print(f"[DEBUG] set_label: {packages_translations[current_language]['appimage']}")
             label.set_label(packages_translations[current_language]["appimage"])
         elif chapter == "deb":
             from translations.packages_chapters import packages_translations
+            print(f"[DEBUG] set_label: {packages_translations[current_language]['deb']}")
             label.set_label(packages_translations[current_language]["deb"])
         elif chapter == "flatpack":
             from translations.packages_chapters import packages_translations
+            print(f"[DEBUG] set_label: {packages_translations[current_language]['flatpack']}")
             label.set_label(packages_translations[current_language]["flatpack"])
         elif chapter == "intro_in_packages":
             from translations.packages_chapters import packages_translations
+            print(f"[DEBUG] set_label: {packages_translations[current_language]['intro_in_packages']}")
             label.set_label(packages_translations[current_language]["intro_in_packages"])
         elif chapter == "rpm":
             from translations.packages_chapters import packages_translations
+            print(f"[DEBUG] set_label: {packages_translations[current_language]['rpm']}")
             label.set_label(packages_translations[current_language]["rpm"])
         elif chapter == "snap":
             from translations.packages_chapters import packages_translations
+            print(f"[DEBUG] set_label: {packages_translations[current_language]['snap']}")
             label.set_label(packages_translations[current_language]["snap"])
         elif chapter == "tar":
             from translations.packages_chapters import packages_translations
+            print(f"[DEBUG] set_label: {packages_translations[current_language]['tar']}")
             label.set_label(packages_translations[current_language]["tar"])
         elif chapter == "zst":
             from translations.packages_chapters import packages_translations
+            print(f"[DEBUG] set_label: {packages_translations[current_language]['zst']}")
             label.set_label(packages_translations[current_language]["zst"])
         # Fallback for main_titles
         else:
-            from translations.main_titles import translations
+            print(f"[DEBUG] set_label (fallback): {translations[current_language].get(chapter, chapter)}")
             label.set_label(translations[current_language].get(chapter, chapter))
     # Updating Chapters
     for label, key in dynamic_main_labels:
+        print(f"[DEBUG] update main label: {key}")
         label.set_label(translations[current_language][key])
     # Updating main btns
     for button, key in dynamic_main_buttons:
+        print(f"[DEBUG] update main button: {key}")
         button.set_label(translations[current_language][key])
 
 def main():

@@ -30,7 +30,8 @@ main_box_panel_intro_topic.append(back_button)
 
 # --- Текстовая метка с хоткеями ---
 label = Gtk.Label(label=hotkeys_translations[current_language]["introduction_topic"])
-dynamic_labels.append((label, "hotkeys"))
+label.set_use_markup(True)
+dynamic_labels.append((label, "introduction_topic"))
 label.add_css_class("intro-label")
 main_box_panel_intro_topic.append(label)
 

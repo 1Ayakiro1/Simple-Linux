@@ -27,7 +27,8 @@ main_box_panel_auto_and_scripts_topic.append(back_button)
 
 # Label
 label = Gtk.Label(label=linux_term_translations[current_language]["auto_and_scripts"])
-dynamic_labels.append((label, "hotkeys"))
+label.set_use_markup(True)
+dynamic_labels.append((label, "auto_and_scripts"))
 label.add_css_class("intro-label")
 main_box_panel_auto_and_scripts_topic.append(label)
 

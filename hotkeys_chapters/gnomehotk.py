@@ -39,6 +39,7 @@ main_box_panel_gnomehotk_topic.append(back_button)
 
 
 label = Gtk.Label(label=hotkeys_translations[current_language]["gnomehotk"])
+label.set_use_markup(True)
 dynamic_labels.append((label, "gnomehotk"))
 label.add_css_class("gnome_hotk_text")
 label.set_wrap(True)
