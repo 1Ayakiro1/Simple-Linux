@@ -1,10 +1,25 @@
 import gi
 gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
-from gi.repository import Gtk, Adw
-from translations.main_titles import current_language
+from gi.repository import Gtk, Adw, Gdk
+from translations.main_titles import translations, current_language
 from code.dynamic_refs import dynamic_labels
 from translations.hotkeys_chapters import hotkeys_translations
+import os
+
+# --- CSS  ---
+css_provider = Gtk.CssProvider()
+css_path = os.path.join(os.path.dirname(__file__), "../styles/gnome_hotk.css")
+try:
+    css_provider.load_from_path(css_path)
+    Gtk.StyleContext.add_provider_for_display(
+        Gdk.Display.get_default(),
+        css_provider,
+        Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
+    )
+except Exception as e:
+    print(f"[CSS ERROR] {e}")
+# --- CSS connection end ---
 
 scrolled_window_gnomehotk_topic = Gtk.ScrolledWindow()
 scrolled_window_gnomehotk_topic.set_policy(Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
@@ -22,11 +37,15 @@ back_button.set_halign(Gtk.Align.START)
 back_button.set_hexpand(False)
 main_box_panel_gnomehotk_topic.append(back_button)
 
-# Label
+
 label = Gtk.Label(label=hotkeys_translations[current_language]["gnomehotk"])
-dynamic_labels.append((label, "hotkeys"))
-label.add_css_class("intro-label")
+dynamic_labels.append((label, "gnomehotk"))
+label.add_css_class("gnome_hotk_text")
+label.set_wrap(True)
+label.set_use_markup(True)
+label.set_xalign(0)
 main_box_panel_gnomehotk_topic.append(label)
+print("[DEBUG:after label] label text:", label.get_text())
 
 scrolled_window_gnomehotk_topic.set_child(main_box_panel_gnomehotk_topic)
 
