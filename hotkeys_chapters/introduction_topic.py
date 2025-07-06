@@ -2,12 +2,27 @@ import gi
 # --- GTK и Adwaita инициализация ---
 gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
-from gi.repository import Gtk, Adw
+from gi.repository import Gtk, Adw, Gdk
 from handlers import on_back_clicked, on_back_clicked_intro1
 from code.text import chapter_texts
 from translations.main_titles import current_language
 from code.dynamic_refs import dynamic_labels
 from translations.hotkeys_chapters import hotkeys_translations
+import os
+
+# --- CSS connetcton start ---
+css_provider = Gtk.CssProvider()
+css_path = os.path.join(os.path.dirname(__file__), "../styles/gnome_hotk.css")
+try:
+    css_provider.load_from_path(css_path)
+    Gtk.StyleContext.add_provider_for_display(
+        Gdk.Display.get_default(),
+        css_provider,
+        Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
+    )
+except Exception as e:
+    print(f"[CSS ERROR] {e}")
+# --- CSS connection end ---
 
 # --- Создаём скроллируемую панель для темы "Hotkeys" ---
 scrolled_window_intro_topic = Gtk.ScrolledWindow()
@@ -32,7 +47,9 @@ main_box_panel_intro_topic.append(back_button)
 label = Gtk.Label(label=hotkeys_translations[current_language]["introduction_topic"])
 label.set_use_markup(True)
 dynamic_labels.append((label, "introduction_topic"))
-label.add_css_class("intro-label")
+label.add_css_class("intro_label_hotk")
+label.set_wrap(True)
+label.set_xalign(0)
 main_box_panel_intro_topic.append(label)
 
 # --- Добавляем основной контейнер в скроллируемое окно ---

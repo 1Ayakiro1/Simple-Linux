@@ -7,7 +7,7 @@ from code.dynamic_refs import dynamic_labels
 from translations.hotkeys_chapters import hotkeys_translations
 import os
 
-# --- CSS  ---
+# --- CSS connetcton start ---
 css_provider = Gtk.CssProvider()
 css_path = os.path.join(os.path.dirname(__file__), "../styles/gnome_hotk.css")
 try:
@@ -43,7 +43,6 @@ label.set_use_markup(True)
 dynamic_labels.append((label, "gnomehotk"))
 label.add_css_class("gnome_hotk_text")
 label.set_wrap(True)
-label.set_use_markup(True)
 label.set_xalign(0)
 main_box_panel_gnomehotk_topic.append(label)
 print("[DEBUG:after label] label text:", label.get_text())
@@ -51,7 +50,7 @@ print("[DEBUG:after label] label text:", label.get_text())
 scrolled_window_gnomehotk_topic.set_child(main_box_panel_gnomehotk_topic)
 
 def get_gnomehotk_panel():
-    return scrolled_window_gnomehotk_topic, "hotkeys_intro_panel", back_button
+    return scrolled_window_gnomehotk_topic, "gnomehotk_panel", back_button
 
 def get_gnomehotk_text():
     return hotkeys_translations[current_language]["gnomehotk"]

@@ -1,4 +1,23 @@
 .gnome_hotk_text{
     line-height: 1.5;
     font-size: 17px;
+    margin-left: 20px;
+}
+
+.intro_label_hotk{
+    line-height: 1.5;
+    font-size: 17px;
+    margin-left: 20px;
+}
+
+.kde_hotk_label{
+    line-height: 1.5;
+    font-size: 17px;
+    margin-left: 20px;
+}
+
+.term_hotk{
+    line-height: 1.5;
+    font-size: 17px;
+    margin-left: 20px;
 }
