@@ -1,11 +1,27 @@
 import gi
 gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
-from gi.repository import Gtk, Adw
+from gi.repository import Gtk, Adw, Gdk
 from code.text import chapter_texts
 from translations.main_titles import current_language
 from translations.linux_term_chapters import linux_term_translations
 from code.dynamic_refs import dynamic_labels
+import os
+
+
+# --- CSS connetcton start ---
+css_provider = Gtk.CssProvider()
+css_path = os.path.join(os.path.dirname(__file__), "../styles/terminal.css")
+try:
+    css_provider.load_from_path(css_path)
+    Gtk.StyleContext.add_provider_for_display(
+        Gdk.Display.get_default(),
+        css_provider,
+        Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
+    )
+except Exception as e:
+    print(f"[CSS ERROR] {e}")
+# --- CSS connection end ---
 
 
 
@@ -29,7 +45,9 @@ main_box_panel_files_and_directories_topic.append(back_button)
 label = Gtk.Label(label=linux_term_translations[current_language]["files_and_directories"])
 label.set_use_markup(True)
 dynamic_labels.append((label, "files_and_directories"))
-label.add_css_class("intro-label")
+label.add_css_class("files_and_directories")
+label.set_wrap(True)
+label.set_xalign(0)
 main_box_panel_files_and_directories_topic.append(label)
 
 scrolled_window_files_and_directories_topic.set_child(main_box_panel_files_and_directories_topic)
