@@ -15,3 +15,33 @@
     font-size: 20px;
     margin-left: 20px;
 }
+
+.rpm{
+    line-height: 1.5;
+    font-size: 20px;
+    margin-left: 20px;
+}
+
+.snap{
+    line-height: 1.5;
+    font-size: 20px;
+    margin-left: 20px;
+}
+
+.tar{
+    line-height: 1.5;
+    font-size: 20px;
+    margin-left: 20px;
+}
+
+.flatpak{
+    line-height: 1.5;
+    font-size: 20px;
+    margin-left: 20px;
+}
+
+.zst{
+    line-height: 1.5;
+    font-size: 20px;
+    margin-left: 20px;
+}
