@@ -59,5 +59,4 @@ linux_term_translations = {
         "processes": "TODO: translate",
         "utils": "TODO: translate",
     },
-    # Добавь другие языки по аналогии
 } 
