@@ -1,21 +1,39 @@
 translations = {
     "en": {
-        "hello": "Hello!",
         "main_title": "Let's Begin!",
-        "terminal": "Linux terminal",
+        "fileman_title": """
+<span size='18000' weight='bold'>File Managers</span>
+
+Learn about the most popular file managers in Linux, their features, and how to use them for everyday tasks.
+""",
+        "terminal_title": """
+<span size='18000' weight='bold'>Terminal</span>
+
+A section dedicated to the Linux terminal: basic commands, automation, scripts, and useful lifehacks for beginners.
+""",
+        "packages_title": """
+<span size='18000' weight='bold'>Packages</span>
+
+Discover how to install, update, and manage software packages in Linux using different formats and tools.
+""",
+        "hotkeys_title": """
+<span size='18000' weight='bold'>Hotkeys</span>
+
+A collection of the most useful hotkeys for working efficiently in Linux environments (GNOME, KDE, terminal, and more).
+""",
+        "terminal": "Terminal",
         "hotkeys": "Hotkeys",
-        "file_manager": "File manager",
-        "packages": "Packages & installing",
-        "auto_and_scripts": "Auto & Scripts",
+        "file_manager": "File Manager",
+        "packages": "Packages",
+        "auto_and_scripts": "Automation & Scripts",
         "files_and_directories": "Files & Directories",
-        "intro_in_terminal": "Intro in terminal",
+        "intro_in_terminal": "Introduction to Terminal",
         "lifehacks": "Lifehacks",
         "navigation": "Navigation",
         "network": "Network",
         "processes": "Processes",
-        "utils": "Utils",
-        "hotkeys": "Hotkeys",
-        "gnome_hotkeys": "Gnome Hotkeys",
+        "utils": "Utilities",
+        "gnome_hotkeys": "GNOME Hotkeys",
         "kde_hotkeys": "KDE Hotkeys",
         "terminal_hotkeys": "Terminal Hotkeys",
         "introduction": "Introduction",
@@ -26,14 +44,14 @@ translations = {
         "nautilus": "Nautilus",
         "sunflower": "Sunflower",
         "thunar": "Thunar",
-        "intro_in_packages": "Intro In Packages",
+        "intro_in_packages": "Introduction to Packages",
         "appimage": "Appimage",
         "deb": "Deb",
         "rpm": "RPM",
         "snap": "Snap",
         "tar": "Tar",
         "flatpack": "Flatpack",
-        "zst": "zst"
+        "zst": "zst",
     },
     "ru": {
         "hello": "Привет!",

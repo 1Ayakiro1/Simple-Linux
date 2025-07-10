@@ -345,7 +345,8 @@ def on_activate(app):
     center_box.set_margin_end(0)
 
     # Top label
-    label = Gtk.Label(label=translations[current_language]["main_title"])
+    label = Gtk.Label()
+    label.set_markup(translations[current_language]["main_title"])
     label.add_css_class("custom-label")
     label.set_halign(Gtk.Align.CENTER)
     label.set_hexpand(True)
@@ -755,97 +756,100 @@ def update_all_texts():
         # Hotkeys chapters
         if chapter == "gnomehotk":
             from translations.hotkeys_chapters import hotkeys_translations
-            label.set_label(hotkeys_translations[current_language]["gnomehotk"])
+            label.set_markup(hotkeys_translations[current_language]["gnomehotk"])
         elif chapter == "kdehotk":
             from translations.hotkeys_chapters import hotkeys_translations
-            label.set_label(hotkeys_translations[current_language]["kdehotk"])
+            label.set_markup(hotkeys_translations[current_language]["kdehotk"])
         elif chapter == "terminalhotk":
             from translations.hotkeys_chapters import hotkeys_translations
-            label.set_label(hotkeys_translations[current_language]["terminalhotk"])
+            label.set_markup(hotkeys_translations[current_language]["terminalhotk"])
         elif chapter == "introduction_topic":
             from translations.hotkeys_chapters import hotkeys_translations
-            label.set_label(hotkeys_translations[current_language]["introduction_topic"])
+            label.set_markup(hotkeys_translations[current_language]["introduction_topic"])
         # Fileman chapters
         elif chapter == "bouble_commander":
             from translations.fileman_chapters import fileman_translations
-            label.set_label(fileman_translations[current_language]["bouble_commander"])
+            label.set_markup(fileman_translations[current_language]["bouble_commander"])
         elif chapter == "caja":
             from translations.fileman_chapters import fileman_translations
-            label.set_label(fileman_translations[current_language]["caja"])
+            label.set_markup(fileman_translations[current_language]["caja"])
         elif chapter == "dolphin":
             from translations.fileman_chapters import fileman_translations
-            label.set_label(fileman_translations[current_language]["dolphin"])
+            label.set_markup(fileman_translations[current_language]["dolphin"])
         elif chapter == "gnome_commander":
             from translations.fileman_chapters import fileman_translations
-            label.set_label(fileman_translations[current_language]["gnome_commander"])
+            label.set_markup(fileman_translations[current_language]["gnome_commander"])
         elif chapter == "intro_in_files":
             from translations.fileman_chapters import fileman_translations
-            label.set_label(fileman_translations[current_language]["intro_in_files"])
+            label.set_markup(fileman_translations[current_language]["intro_in_files"])
         elif chapter == "nautilus":
             from translations.fileman_chapters import fileman_translations
-            label.set_label(fileman_translations[current_language]["nautilus"])
+            label.set_markup(fileman_translations[current_language]["nautilus"])
         elif chapter == "sunflower":
             from translations.fileman_chapters import fileman_translations
-            label.set_label(fileman_translations[current_language]["sunflower"])
+            label.set_markup(fileman_translations[current_language]["sunflower"])
         elif chapter == "thunar":
             from translations.fileman_chapters import fileman_translations
-            label.set_label(fileman_translations[current_language]["thunar"])
+            label.set_markup(fileman_translations[current_language]["thunar"])
         # Linux term chapters
         elif chapter == "auto_and_scripts":
             from translations.linux_term_chapters import linux_term_translations
-            label.set_label(linux_term_translations[current_language]["auto_and_scripts"])
+            label.set_markup(linux_term_translations[current_language]["auto_and_scripts"])
         elif chapter == "files_and_directories":
             from translations.linux_term_chapters import linux_term_translations
-            label.set_label(linux_term_translations[current_language]["files_and_directories"])
+            label.set_markup(linux_term_translations[current_language]["files_and_directories"])
         elif chapter == "intro_in_terminal":
             from translations.linux_term_chapters import linux_term_translations
-            label.set_label(linux_term_translations[current_language]["intro_in_terminal"])
+            label.set_markup(linux_term_translations[current_language]["intro_in_terminal"])
         elif chapter == "lifehacks":
             from translations.linux_term_chapters import linux_term_translations
-            label.set_label(linux_term_translations[current_language]["lifehacks"])
+            label.set_markup(linux_term_translations[current_language]["lifehacks"])
         elif chapter == "navigation":
             from translations.linux_term_chapters import linux_term_translations
-            label.set_label(linux_term_translations[current_language]["navigation"])
+            label.set_markup(linux_term_translations[current_language]["navigation"])
         elif chapter == "network":
             from translations.linux_term_chapters import linux_term_translations
-            label.set_label(linux_term_translations[current_language]["network"])
+            label.set_markup(linux_term_translations[current_language]["network"])
         elif chapter == "processes":
             from translations.linux_term_chapters import linux_term_translations
-            label.set_label(linux_term_translations[current_language]["processes"])
+            label.set_markup(linux_term_translations[current_language]["processes"])
         elif chapter == "utils":
             from translations.linux_term_chapters import linux_term_translations
-            label.set_label(linux_term_translations[current_language]["utils"])
+            label.set_markup(linux_term_translations[current_language]["utils"])
         # Packages chapters
         elif chapter == "appimage":
             from translations.packages_chapters import packages_translations
-            label.set_label(packages_translations[current_language]["appimage"])
+            label.set_markup(packages_translations[current_language]["appimage"])
         elif chapter == "deb":
             from translations.packages_chapters import packages_translations
-            label.set_label(packages_translations[current_language]["deb"])
+            label.set_markup(packages_translations[current_language]["deb"])
         elif chapter == "flatpack":
             from translations.packages_chapters import packages_translations
-            label.set_label(packages_translations[current_language]["flatpack"])
+            label.set_markup(packages_translations[current_language]["flatpack"])
         elif chapter == "intro_in_packages":
             from translations.packages_chapters import packages_translations
-            label.set_label(packages_translations[current_language]["intro_in_packages"])
+            label.set_markup(packages_translations[current_language]["intro_in_packages"])
         elif chapter == "rpm":
             from translations.packages_chapters import packages_translations
-            label.set_label(packages_translations[current_language]["rpm"])
+            label.set_markup(packages_translations[current_language]["rpm"])
         elif chapter == "snap":
             from translations.packages_chapters import packages_translations
-            label.set_label(packages_translations[current_language]["snap"])
+            label.set_markup(packages_translations[current_language]["snap"])
         elif chapter == "tar":
             from translations.packages_chapters import packages_translations
-            label.set_label(packages_translations[current_language]["tar"])
+            label.set_markup(packages_translations[current_language]["tar"])
         elif chapter == "zst":
             from translations.packages_chapters import packages_translations
-            label.set_label(packages_translations[current_language]["zst"])
+            label.set_markup(packages_translations[current_language]["zst"])
         # Fallback for main_titles
         else:
-            label.set_label(translations[current_language].get(chapter, chapter))
+            label.set_markup(translations[current_language].get(chapter, chapter))
     # Updating Chapters
     for label, key in dynamic_main_labels:
-        label.set_label(translations[current_language][key])
+        if key == "main_title":
+            label.set_markup(translations[current_language][key])
+        else:
+            label.set_label(translations[current_language][key])
     # Updating main btns
     for button, key in dynamic_main_buttons:
         button.set_label(translations[current_language][key])
